@@ -36,7 +36,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030914] text-slate-100 flex flex-col font-sans selection:bg-[#00f0ff] selection:text-black">
+    <div className="min-h-screen bg-[#08090d] text-slate-100 flex flex-col font-sans selection:bg-[#ff007f] selection:text-white">
       
       {/* Persona 3 Reload Navigation Header (No Phone Top Bar) */}
       <P3RNavbar

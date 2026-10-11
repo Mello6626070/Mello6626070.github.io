@@ -58,7 +58,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
       
       {/* Container styled after Watch Dogs 2 Mission Briefing View (Screenshot 2 & 3) */}
-      <div className="relative w-full max-w-2xl bg-[#090b10] border-2 border-[#163c6d] shadow-[0_0_50px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-2xl bg-[#0a0b10] border-2 border-[#ff007f]/50 shadow-[0_0_50px_rgba(255,0,127,0.2)] overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Top Header Graphic Banner with Halftone Dither Texture */}
         <div className={`relative h-44 sm:h-52 w-full bg-gradient-to-r ${getBannerGradient()} p-5 flex flex-col justify-between overflow-hidden shrink-0`}>
@@ -73,20 +73,20 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
               soundManager.playBack();
               onClose();
             }}
-            className="absolute top-3 right-3 z-20 p-2 bg-black/70 hover:bg-black text-white hover:text-[#00f0ff] border border-white/20 transition-colors cursor-pointer"
+            className="absolute top-3 right-3 z-20 p-2 bg-black/75 hover:bg-black text-white hover:text-[#ff007f] border border-white/20 transition-colors cursor-pointer"
             title="Close Briefing (ESC)"
           >
             <X size={18} />
           </button>
 
           {/* Category Stamp */}
-          <div className="relative z-10 text-[11px] font-mono tracking-widest text-white/90 bg-black/60 px-2.5 py-1 inline-block border border-white/10 uppercase self-start">
+          <div className="relative z-10 text-[11px] font-mono tracking-widest text-white/90 bg-black/70 px-2.5 py-1 inline-block border border-white/10 uppercase self-start font-bold">
             {operation.category}
           </div>
 
           {/* Big Halftone Mission Title */}
           <div className="relative z-10 text-center my-auto">
-            <div className="text-[11px] font-mono tracking-widest text-[#00f0ff] uppercase mb-1">
+            <div className="text-[11px] font-mono tracking-widest text-[#00ff66] uppercase mb-1 font-bold">
               [ FIELD OPERATION BRIEFING ]
             </div>
             <h3 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-wider drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]">
@@ -96,20 +96,20 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
 
           {/* Status strip */}
           <div className="relative z-10 flex justify-between items-center text-[11px] font-mono text-white/80">
-            <span className="bg-black/50 px-2 py-0.5 border border-white/10">{operation.badge}</span>
-            <span className="bg-black/50 px-2 py-0.5 border border-white/10">ACTIVE CANDIDATE PROJECT</span>
+            <span className="bg-black/60 px-2 py-0.5 border border-white/10 font-bold">{operation.badge}</span>
+            <span className="bg-black/60 px-2 py-0.5 border border-white/10">ACTIVE CANDIDATE PROJECT</span>
           </div>
 
         </div>
 
         {/* Navigation Tabs Bar (< ! > directly from Screenshot 2 & 3) */}
-        <div className="flex items-center justify-between bg-[#111622] border-y-2 border-[#163c6d] px-4 py-2 shrink-0">
+        <div className="flex items-center justify-between bg-[#12141c] border-y-2 border-[#1e222f] px-4 py-2 shrink-0">
           <button
             onClick={() => {
               soundManager.playSelect();
               onPrev();
             }}
-            className="flex items-center gap-1 px-3 py-1 bg-[#1a2336] hover:bg-[#25324d] text-white font-mono text-xs border border-[#2b3c5c] cursor-pointer"
+            className="flex items-center gap-1 px-3 py-1 bg-[#1a1d28] hover:bg-[#252a3a] text-white font-mono text-xs border border-[#2b3042] cursor-pointer"
           >
             <ChevronLeft size={16} />
             <span className="hidden sm:inline">PREV</span>
@@ -129,7 +129,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
               soundManager.playSelect();
               onNext();
             }}
-            className="flex items-center gap-1 px-3 py-1 bg-[#1a2336] hover:bg-[#25324d] text-white font-mono text-xs border border-[#2b3c5c] cursor-pointer"
+            className="flex items-center gap-1 px-3 py-1 bg-[#1a1d28] hover:bg-[#252a3a] text-white font-mono text-xs border border-[#2b3042] cursor-pointer"
           >
             <span className="hidden sm:inline">NEXT</span>
             <ChevronRight size={16} />
@@ -137,10 +137,10 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
         </div>
 
         {/* Scrollable Briefing Content */}
-        <div className="p-5 sm:p-6 space-y-6 overflow-y-auto font-mono text-sm leading-relaxed bg-[#06080d]">
+        <div className="p-5 sm:p-6 space-y-6 overflow-y-auto font-mono text-sm leading-relaxed bg-[#08090d]">
           
           {/* Subtitle Header */}
-          <div className="text-white font-bold text-base tracking-wide border-b border-[#142136] pb-2 font-display uppercase">
+          <div className="text-white font-bold text-base tracking-wide border-b border-[#1b1e2a] pb-2 font-display uppercase">
             {operation.subtitle}
           </div>
 
@@ -149,7 +149,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
             <div className="text-[#00ff66] font-mono font-bold tracking-wider text-sm flex items-center gap-1.5">
               <span>[ OBJECTIVE ]</span>
             </div>
-            <p className="text-slate-200 pl-2 border-l-2 border-[#00ff66]/30 font-sans text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-200 pl-2 border-l-2 border-[#00ff66]/50 font-sans text-sm sm:text-base leading-relaxed">
               {operation.objective}
             </p>
           </div>
@@ -159,7 +159,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
             <div className="text-[#00ff66] font-mono font-bold tracking-wider text-sm flex items-center gap-1.5">
               <span>[ BRIEF ]</span>
             </div>
-            <p className="text-slate-300 pl-2 border-l-2 border-[#00ff66]/30 font-sans text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 pl-2 border-l-2 border-[#00ff66]/50 font-sans text-sm sm:text-base leading-relaxed">
               {operation.brief}
             </p>
           </div>
@@ -171,8 +171,8 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-2">
               {operation.keyFeatures.map((feat, idx) => (
-                <div key={idx} className="flex items-start gap-2 text-xs text-slate-300 bg-[#0c1524] p-2 border border-[#142a47]">
-                  <CheckCircle2 size={14} className="text-[#00f0ff] shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-2 text-xs text-slate-300 bg-[#12141c] p-2 border border-[#202434]">
+                  <CheckCircle2 size={14} className="text-[#00ff66] shrink-0 mt-0.5" />
                   <span>{feat}</span>
                 </div>
               ))}
@@ -188,7 +188,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
               {operation.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 text-xs font-mono bg-[#0c2448] text-[#9ecaff] border border-[#173e73]"
+                  className="px-2.5 py-1 text-xs font-mono bg-[#161924] text-white border border-[#2b3042]"
                 >
                   {tech}
                 </span>
@@ -199,7 +199,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
         </div>
 
         {/* Bottom Action Footer (Track Mission / Demo CTA + Return ESC) */}
-        <div className="p-4 bg-[#0d121c] border-t-2 border-[#163c6d] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div className="p-4 bg-[#10121a] border-t-2 border-[#1e222f] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           
           {/* Main Action Buttons */}
           <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -209,9 +209,9 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => soundManager.playConfirm()}
-                className="flex-1 sm:flex-none px-5 py-2.5 bg-white hover:bg-[#00f0ff] text-black font-display font-bold text-xs tracking-widest uppercase transition-colors flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                className="flex-1 sm:flex-none px-5 py-2.5 bg-white hover:bg-[#ff007f] text-black hover:text-white font-display font-black text-xs tracking-widest uppercase transition-colors flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.3)]"
               >
-                <Play size={14} className="fill-black" />
+                <Play size={14} className="fill-current" />
                 <span>LAUNCH DEMO</span>
               </a>
             )}
@@ -222,7 +222,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => soundManager.playSelect()}
-                className="flex-1 sm:flex-none px-4 py-2.5 bg-[#17253b] hover:bg-[#203657] text-white font-mono text-xs tracking-wider transition-colors border border-[#2b4c7a] flex items-center justify-center gap-2"
+                className="flex-1 sm:flex-none px-4 py-2.5 bg-[#171a25] hover:bg-[#232736] text-white font-mono text-xs tracking-wider transition-colors border border-[#2b3042] flex items-center justify-center gap-2"
               >
                 <GithubIcon size={14} />
                 <span>GITHUB REPO</span>
@@ -232,7 +232,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
 
           {/* Bottom Game Keybind Prompts (from Screenshot 2 & 3) */}
           <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
-            <span className="bg-[#192438] px-2 py-0.5 border border-[#2c3e5e] text-slate-300">
+            <span className="bg-[#181a24] px-2 py-0.5 border border-[#2a2f40] text-slate-300">
               ← / → Navigate
             </span>
             <button
@@ -240,7 +240,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
                 soundManager.playBack();
                 onClose();
               }}
-              className="bg-[#192438] px-2 py-0.5 border border-[#2c3e5e] text-slate-300 hover:text-white cursor-pointer"
+              className="bg-[#181a24] px-2 py-0.5 border border-[#2a2f40] text-slate-300 hover:text-white cursor-pointer"
             >
               Return [ESC]
             </button>

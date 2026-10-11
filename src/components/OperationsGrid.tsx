@@ -41,13 +41,13 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
     : projectsData.filter((p) => p.discipline === activeFilter);
 
   return (
-    <section className="py-12 bg-[#030914] relative">
+    <section className="py-12 bg-[#08090d] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-[#0e2a52] pb-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-[#1e222f] pb-6 mb-8">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#00f0ff] uppercase tracking-widest mb-1">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#ff007f] uppercase tracking-widest mb-1 font-bold">
               <Layers size={14} />
               <span>WATCH DOGS 2 OPERATIONS DECK // PORTFOLIO SHOWCASE</span>
             </div>
@@ -56,12 +56,12 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
             </h2>
           </div>
 
-          <div className="font-mono text-xs text-slate-400 bg-[#061830] px-3 py-1.5 border border-[#113566]">
-            SHOWING <span className="text-[#00f0ff] font-bold">{filteredProjects.length}</span> OF <span className="text-white font-bold">{projectsData.length}</span> ACTIVE OPS
+          <div className="font-mono text-xs text-slate-400 bg-[#12141c] px-3 py-1.5 border border-[#222634]">
+            SHOWING <span className="text-[#00ff66] font-bold">{filteredProjects.length}</span> OF <span className="text-white font-bold">{projectsData.length}</span> ACTIVE OPS
           </div>
         </div>
 
-        {/* Filter Pills (Persona 3 Slanted Ribbon Style) */}
+        {/* Filter Pills with Watch Dogs 2 Contrasting Styling */}
         <div className="flex flex-wrap gap-2 mb-8 items-center">
           <div className="text-xs font-mono text-slate-400 mr-2 flex items-center gap-1">
             <Filter size={12} />
@@ -77,8 +77,8 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
                 onMouseEnter={() => soundManager.playHover()}
                 className={`px-4 py-2 text-xs font-display font-bold tracking-wider transition-all transform -skew-x-12 cursor-pointer ${
                   isActive
-                    ? 'bg-white text-black shadow-[0_0_15px_rgba(0,240,255,0.4)] border-l-4 border-[#ff003c]'
-                    : 'bg-[#071933] text-[#71a0cd] hover:bg-[#0c274f] hover:text-white border border-[#0f3261]'
+                    ? 'bg-white text-black shadow-[0_0_15px_rgba(255,0,127,0.4)] border-l-4 border-[#ff007f]'
+                    : 'bg-[#12141c] text-[#9ca2b5] hover:bg-[#1a1d27] hover:text-white border border-[#222634]'
                 }`}
               >
                 <span className="inline-block transform skew-x-12">
@@ -89,7 +89,7 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
           })}
         </div>
 
-        {/* 2-Column Grid (Exact Watch Dogs 2 Reference Layout from Screenshot 1) */}
+        {/* 2-Column Grid matching Screenshot 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((operation) => (
             <OperationCard
