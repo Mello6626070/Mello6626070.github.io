@@ -1,91 +1,89 @@
 import React, { useState } from 'react';
-import { P3RNavbar } from './components/P3RNavbar';
-import type { NavTab } from './components/P3RNavbar';
+import { Navbar } from './components/Navbar';
+import type { NavSection } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { OperationsGrid } from './components/OperationsGrid';
-import { BriefingModal } from './components/BriefingModal';
-import { SkillDeck } from './components/SkillDeck';
-import { RoadmapView } from './components/RoadmapView';
-import { ContactView } from './components/ContactView';
+import { ProjectShowcase } from './components/ProjectShowcase';
+import { ProjectModal } from './components/ProjectModal';
+import { SkillSection } from './components/SkillSection';
+import { RoadmapSection } from './components/RoadmapSection';
+import { ContactSection } from './components/ContactSection';
 import { MediaScrubberBar } from './components/MediaScrubberBar';
 import { Footer } from './components/Footer';
 import { projectsData } from './data/projects';
-import type { ProjectOperation } from './data/projects';
-import { profileData } from './data/profile';
+import type { ProjectItem } from './data/projects';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<NavTab>('operations');
-  const [selectedOperation, setSelectedOperation] = useState<ProjectOperation | null>(null);
+  const [activeSection, setActiveSection] = useState<NavSection>('projects');
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [selectedDiscipline, setSelectedDiscipline] = useState<string>('all');
 
-  const handleSelectOperation = (op: ProjectOperation) => {
-    setSelectedOperation(op);
+  const handleSelectProject = (project: ProjectItem) => {
+    setSelectedProject(project);
   };
 
-  const handleNextOperation = () => {
-    if (!selectedOperation) return;
-    const currentIndex = projectsData.findIndex((p) => p.id === selectedOperation.id);
+  const handleNextProject = () => {
+    if (!selectedProject) return;
+    const currentIndex = projectsData.findIndex((p) => p.id === selectedProject.id);
     const nextIndex = (currentIndex + 1) % projectsData.length;
-    setSelectedOperation(projectsData[nextIndex]);
+    setSelectedProject(projectsData[nextIndex]);
   };
 
-  const handlePrevOperation = () => {
-    if (!selectedOperation) return;
-    const currentIndex = projectsData.findIndex((p) => p.id === selectedOperation.id);
+  const handlePrevProject = () => {
+    if (!selectedProject) return;
+    const currentIndex = projectsData.findIndex((p) => p.id === selectedProject.id);
     const prevIndex = (currentIndex - 1 + projectsData.length) % projectsData.length;
-    setSelectedOperation(projectsData[prevIndex]);
+    setSelectedProject(projectsData[prevIndex]);
   };
 
   return (
-    <div className="min-h-screen bg-[#07070a] text-white flex flex-col font-sans selection:bg-[#01ef01] selection:text-black">
+    <div className="min-h-screen bg-[#1e1e2e] text-[#cdd6f4] flex flex-col font-sans selection:bg-[#f5c2e7] selection:text-[#11111b]">
       
-      {/* Persona 3 Reload Navigation Header */}
-      <P3RNavbar
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        statusText={profileData.headline}
+      {/* Friendly Rounded Catppuccin Navbar */}
+      <Navbar
+        activeSection={activeSection}
+        onNavigate={setActiveSection}
       />
 
-      {/* Hero Section with Artistic Nightscape Moon & Clouds */}
+      {/* Hero Section with Illustrated Moonscape & Floating Cloud Layers */}
       <HeroSection
-        onNavigate={setActiveTab}
+        onNavigate={setActiveSection}
         onFilterDiscipline={(disc) => {
           setSelectedDiscipline(disc);
-          setActiveTab('operations');
+          setActiveSection('projects');
         }}
       />
 
-      {/* Main Content View Switcher */}
+      {/* Main Content Section Switcher */}
       <main className="flex-1">
-        {activeTab === 'operations' && (
-          <OperationsGrid
-            onSelectOperation={handleSelectOperation}
+        {activeSection === 'projects' && (
+          <ProjectShowcase
+            onSelectProject={handleSelectProject}
             selectedDiscipline={selectedDiscipline}
             onDisciplineChange={setSelectedDiscipline}
           />
         )}
 
-        {activeTab === 'skills' && <SkillDeck />}
+        {activeSection === 'skills' && <SkillSection />}
 
-        {activeTab === 'roadmap' && <RoadmapView />}
+        {activeSection === 'journey' && <RoadmapSection />}
 
-        {activeTab === 'contact' && <ContactView />}
+        {activeSection === 'contact' && <ContactSection />}
       </main>
 
-      {/* Watch Dogs 2 Mission Briefing Modal (Screenshots 2 & 3) */}
-      {selectedOperation && (
-        <BriefingModal
-          operation={selectedOperation}
-          onClose={() => setSelectedOperation(null)}
-          onNext={handleNextOperation}
-          onPrev={handlePrevOperation}
+      {/* Detailed Project Sketchbook Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          onNext={handleNextProject}
+          onPrev={handlePrevProject}
         />
       )}
 
-      {/* Interactive Media Scrubber Player Bar (from Inspiration Images) */}
+      {/* Interactive Lo-Fi Audio Player / Scrubber Bar (from Inspiration Images) */}
       <MediaScrubberBar />
 
-      {/* Footer (Watch Dogs 2 Bottom White Bar with Return ESC) */}
+      {/* Cozy Sketchbook Footer */}
       <Footer />
 
     </div>

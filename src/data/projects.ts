@@ -1,134 +1,108 @@
 export type DisciplineType = 'all' | 'gamedev' | 'cybersecurity' | 'datascience' | 'softwareeng';
 
-export interface ProjectOperation {
+export interface ProjectItem {
   id: string;
   title: string;
   subtitle: string;
-  category: string;
   discipline: DisciplineType;
+  categoryName: string;
   badge: string;
-  badgeColor: string; // 'orange' | 'purple' | 'cyan' | 'pink' | 'lime'
-  notificationCount?: number;
-  starred?: boolean;
-  themeStyle: 'cyan-purple' | 'purple-magenta' | 'green-dark' | 'orange-cyan' | 'yellow-red' | 'blue-cyan';
+  accentColor: string; // Catppuccin color hex
+  bgGradient: string;
+  summary: string;
   objective: string;
-  brief: string;
+  architecture: string;
   techStack: string[];
-  keyFeatures: string[];
+  keyHighlights: string[];
   demoUrl?: string;
   githubUrl?: string;
-  imageArt: {
-    primaryColor: string;
-    secondaryColor: string;
-    accentColor: string;
-    iconName: string;
-    graphicLabel: string;
-  };
+  doodleIcon: string;
 }
 
-export const projectsData: ProjectOperation[] = [
+export const projectsData: ProjectItem[] = [
   {
     id: "chrono-rift",
-    title: "CHRONO RIFT // GODOT 4",
-    subtitle: "Physics-Driven 2D/3D Action Platformer",
-    category: "GAME DEV OPERATION",
+    title: "Chrono Rift // 2D/3D Action Game",
+    subtitle: "Physics-Driven Platformer in Godot 4",
     discipline: "gamedev",
-    badge: "GODOT 4",
-    badgeColor: "cyan",
-    notificationCount: 1,
-    starred: true,
-    themeStyle: "cyan-purple",
-    objective: "Architect a responsive action platformer in Godot 4.3 featuring custom character physics, finite state machines, hit-pause mechanics, and dynamic camera framing.",
-    brief: "Engineered from the ground up utilizing GDScript and Godot 4's custom physics layers. Designed a decoupled event-driven signal architecture for UI, audio, and gameplay logic. Includes custom GLSL-inspired canvas shaders for chromatic hit effects, pixel-perfect collision detection, and tight gamepad controller input buffering.",
-    techStack: ["Godot Engine 4", "GDScript", "Custom Shaders", "Physics Engine", "Aseprite"],
-    keyFeatures: [
-      "Decoupled Event-Bus Architecture via Godot Signals",
+    categoryName: "Game Development",
+    badge: "Godot 4 & GDScript",
+    accentColor: "#cba6f7", // Mauve
+    bgGradient: "from-[#cba6f7]/20 via-[#b4befe]/10 to-[#181825]",
+    summary: "A snappy action platformer featuring custom state machines, screen-shake juice, particle FX, and tight controller input buffering.",
+    objective: "Build a responsive character controller and modular combat loop using Godot 4's custom physics layers and event-driven signal bus architecture.",
+    architecture: "Engineered in Godot 4.3 with pure GDScript. Decoupled UI, audio, and entity state using an Event-Bus pattern. Created custom 2D canvas shaders for chromatic hit-stops, coyote time, and pixel-accurate collision layers.",
+    techStack: ["Godot 4", "GDScript", "Custom Shaders", "Physics Engine", "Aseprite"],
+    keyHighlights: [
       "Hierarchical Finite State Machine for Player Controller",
+      "Decoupled Event-Bus Architecture via Godot Signals",
       "Dynamic Camera Framing & Screen Shake Mechanics",
-      "Pixel-Accurate Hitboxes & Hurtboxes",
+      "Tight Controller Input Buffering & Jump Arcs",
     ],
     demoUrl: "https://itch.io",
     githubUrl: "https://github.com",
-    imageArt: {
-      primaryColor: "#00f0ff",
-      secondaryColor: "#7928ca",
-      accentColor: "#ff007f",
-      iconName: "Gamepad2",
-      graphicLabel: "GODOT 4 CORE",
-    },
+    doodleIcon: "Gamepad2",
   },
   {
     id: "cyber-sanctuary",
-    title: "CYBER SANCTUARY // 3D SUITE",
-    subtitle: "Low-Poly Environment & Asset Kit",
-    category: "GAME DEV OPERATION",
+    title: "Cyber Sanctuary // 3D Low-Poly Kit",
+    subtitle: "Stylized Environment & Asset Suite",
     discipline: "gamedev",
-    badge: "BLENDER 3D",
-    badgeColor: "orange",
-    starred: true,
-    themeStyle: "orange-cyan",
-    objective: "Design, model, sculpt, and UV-unwrap modular 3D game assets and environmental props in Blender ready for direct export into real-time engines.",
-    brief: "Crafted a stylized low-poly sci-fi modular kit in Blender. Utilized non-destructive modifiers (Bevel, Mirror, Weighted Normal), custom color palettes for zero-texture-lag draw calls, and optimized mesh topology. Assets were rigged, baked, and exported cleanly as .GLTF/.OBJ for seamless Godot Engine integration.",
-    techStack: ["Blender 3D", "PBR Materials", "UV Unwrapping", "Low-Poly Modeling", "Godot Asset Pipeline"],
-    keyFeatures: [
-      "Low-Poly Topology under 4K triangles per asset",
-      "Modular Grid Snapping for rapid level layout",
-      "Custom Vertex Color Palette workflow",
-      "Exported & Tested in Godot 4 3D scene renderer",
+    categoryName: "Game Development",
+    badge: "Blender 3D",
+    accentColor: "#fab387", // Peach
+    bgGradient: "from-[#fab387]/20 via-[#f9e2af]/10 to-[#181825]",
+    summary: "A hand-crafted modular 3D environment pack with clean low-poly topology, baked ambient occlusion, and game-engine export pipelines.",
+    objective: "Design, model, sculpt, and UV-unwrap modular 3D assets in Blender, ensuring clean draw-call performance and immediate drag-and-drop Godot integration.",
+    architecture: "Crafted in Blender 3D utilizing non-destructive modifiers (Bevel, Weighted Normal), custom vertex color palettes, and unified texture atlases. Rigged and optimized for direct .GLTF export into Godot 4.",
+    techStack: ["Blender 3D", "Low-Poly Modeling", "UV Unwrapping", "PBR Texturing", "Godot Asset Pipeline"],
+    keyHighlights: [
+      "Clean low-poly topology under 4K triangles per asset",
+      "Modular grid snapping for rapid level layouts",
+      "Custom vertex color palette workflow",
+      "Seamlessly imported & verified in Godot 4 3D viewport",
     ],
     demoUrl: "https://artstation.com",
     githubUrl: "https://github.com",
-    imageArt: {
-      primaryColor: "#ff6a00",
-      secondaryColor: "#00d2ff",
-      accentColor: "#ffe600",
-      iconName: "Box",
-      graphicLabel: "BLENDER ASSET",
-    },
+    doodleIcon: "Box",
   },
   {
     id: "packet-sentinel",
-    title: "PACKET SENTINEL // TELEMETRY",
-    subtitle: "Real-Time Network Protocol Analyzer",
-    category: "CYBERSECURITY LAB",
+    title: "Packet Sentinel // Network Sniffer",
+    subtitle: "Real-Time Protocol Telemetry Tool",
     discipline: "cybersecurity",
-    badge: "SECURITY",
-    badgeColor: "lime",
-    notificationCount: 1,
-    themeStyle: "green-dark",
-    objective: "Inspect live network interfaces, dissect layer 2-4 headers (Ethernet, IPv4/v6, TCP/UDP), and detect suspicious port scans or ARP spoofing attempts.",
-    brief: "Implemented a network telemetry tool written in Python utilizing raw socket captures and Scapy dissection. Detects unauthorized ARP reply broadcasts, flags anomalous TCP SYN scan signatures, and exports structured PCAP audit logs for incident response review.",
+    categoryName: "Cybersecurity",
+    badge: "Python & Wireshark",
+    accentColor: "#a6e3a1", // Green
+    bgGradient: "from-[#a6e3a1]/20 via-[#94e2d5]/10 to-[#181825]",
+    summary: "A real-time network packet analyzer that captures live network interfaces, decodes protocol headers, and flags suspicious broadcast traffic.",
+    objective: "Inspect live layer 2-4 headers (Ethernet, IPv4/v6, TCP/UDP), detect ARP spoofing attempts, and output structured PCAP audit logs.",
+    architecture: "Written in Python utilizing raw socket captures and Scapy dissection. Detects unauthorized ARP reply broadcasts, flags anomalous TCP SYN scan signatures, and exports structured PCAP logs for incident response review.",
     techStack: ["Python", "Scapy", "Wireshark", "Raw Sockets", "TCP/IP Protocol", "Linux"],
-    keyFeatures: [
-      "Live Packet Sniffing with zero third-party GUI dependencies",
-      "ARP Spoofing & TCP SYN flood detection heuristics",
-      "Protocol Distribution & Bandwidth Statistics",
+    keyHighlights: [
+      "Live packet sniffing with zero third-party GUI dependencies",
+      "ARP spoofing & TCP SYN flood detection heuristics",
+      "Protocol distribution & bandwidth telemetry",
       "Export to industry-standard PCAP format",
     ],
     demoUrl: "https://github.com",
     githubUrl: "https://github.com",
-    imageArt: {
-      primaryColor: "#00ff66",
-      secondaryColor: "#0a2212",
-      accentColor: "#39ff14",
-      iconName: "ShieldAlert",
-      graphicLabel: "NET_SENTINEL",
-    },
+    doodleIcon: "ShieldAlert",
   },
   {
     id: "crypto-vault",
-    title: "CRYPTO VAULT // KEY AUDITOR",
-    subtitle: "Zero-Knowledge Encryption & Entropy Suite",
-    category: "CYBERSECURITY LAB",
+    title: "Crypto Vault // Key & Hash Auditor",
+    subtitle: "Zero-Knowledge Encryption Utility",
     discipline: "cybersecurity",
-    badge: "CRYPTOGRAPHY",
-    badgeColor: "purple",
-    notificationCount: 3,
-    themeStyle: "purple-magenta",
-    objective: "Build an authenticated encryption utility and credential security auditor evaluating entropy and modern cipher resistance.",
-    brief: "Engineered a command-line credential management utility implementing AES-256-GCM authenticated encryption and Argon2id key derivation. Includes a password entropy analysis engine based on NIST guidelines, memory-safe key erasure routines, and HMAC verification.",
+    categoryName: "Cybersecurity",
+    badge: "Cryptography",
+    accentColor: "#f38ba8", // Red / Rose
+    bgGradient: "from-[#f38ba8]/20 via-[#eba0ac]/10 to-[#181825]",
+    summary: "A secure credential storage utility implementing AES-256-GCM, Argon2id key derivation, and Shannon entropy password evaluation.",
+    objective: "Implement modern cryptographic primitives and memory-safe secret handling for proactive credential security auditing.",
+    architecture: "Command-line utility implementing AES-256-GCM authenticated encryption and Argon2id memory-hard password hashing. Computes Shannon entropy scores to help users audit weak passwords before deployment.",
     techStack: ["Python", "Argon2id", "AES-256-GCM", "Cryptography", "Bash"],
-    keyFeatures: [
+    keyHighlights: [
       "AES-256-GCM Authenticated Encryption with nonce rotation",
       "Argon2id memory-hard password hashing",
       "Shannon entropy analysis for credential strength scoring",
@@ -136,70 +110,52 @@ export const projectsData: ProjectOperation[] = [
     ],
     demoUrl: "https://github.com",
     githubUrl: "https://github.com",
-    imageArt: {
-      primaryColor: "#c026d3",
-      secondaryColor: "#00f0ff",
-      accentColor: "#ff007f",
-      iconName: "Lock",
-      graphicLabel: "VAULT SEC",
-    },
+    doodleIcon: "Lock",
   },
   {
     id: "neural-insight",
-    title: "NEURAL INSIGHT // PREDICTIVE",
-    subtitle: "Exploratory Data Analysis & ML Pipeline",
-    category: "DATA ANALYSIS OPERATION",
+    title: "Neural Insight // Data Analytics",
+    subtitle: "Exploratory EDA & ML Modeling Pipeline",
     discipline: "datascience",
-    badge: "DATA SCIENCE",
-    badgeColor: "cyan",
-    starred: true,
-    themeStyle: "blue-cyan",
-    objective: "Execute comprehensive data cleansing, exploratory correlation analysis, and train supervised machine learning models on complex tabular datasets.",
-    brief: "Developed an automated exploratory data analysis (EDA) pipeline utilizing Python, Pandas, NumPy, and Scikit-Learn. The system ingests multi-variable datasets, handles missingness and categorical encoding, detects outliers, and compares Random Forest vs. Gradient Boosted models with cross-validation metrics.",
+    categoryName: "Data Science",
+    badge: "Pandas & Scikit-Learn",
+    accentColor: "#89dceb", // Sky
+    bgGradient: "from-[#89dceb]/20 via-[#74c7ec]/10 to-[#181825]",
+    summary: "An automated data pipeline for cleaning raw multi-variate datasets, performing exploratory feature analysis, and evaluating ML models.",
+    objective: "Transform noisy tabular data into clear visual insights, engineer predictive features, and benchmark supervised machine learning algorithms.",
+    architecture: "Jupyter-based pipeline using Python, Pandas, NumPy, and Scikit-Learn. Handles automated missing value imputation, multi-collinearity checks, and compares Random Forest vs. Gradient Boosted models with cross-validation metrics.",
     techStack: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib", "Seaborn"],
-    keyFeatures: [
+    keyHighlights: [
       "Automated Missing Value Imputation & Feature Scaling",
       "Pearson & Spearman Correlation Heatmap Generation",
       "ROC-AUC, Precision-Recall, and F1 Score Evaluation",
-      "Exportable summary reports with interactive plots",
+      "Interactive Seaborn & Plotly visualization charts",
     ],
     demoUrl: "https://github.com",
     githubUrl: "https://github.com",
-    imageArt: {
-      primaryColor: "#00d2ff",
-      secondaryColor: "#004080",
-      accentColor: "#00ffff",
-      iconName: "BarChart3",
-      graphicLabel: "DATA PIPELINE",
-    },
+    doodleIcon: "BarChart3",
   },
   {
     id: "nexus-engine",
-    title: "NEXUS // FULL-STACK PLATFORM",
-    subtitle: "High-Performance Modular Web Architecture",
-    category: "SOFTWARE ENG OPERATION",
+    title: "Nexus Platform // Full-Stack Web",
+    subtitle: "Type-Safe Modern Web Application",
     discipline: "softwareeng",
-    badge: "SOFTWARE ENG",
-    badgeColor: "orange",
-    starred: true,
-    themeStyle: "yellow-red",
-    objective: "Develop a type-safe web platform featuring authenticated endpoints, reactive component state, and CI/CD automated pipeline.",
-    brief: "Created a full-stack developer portfolio and web utility platform built with React, TypeScript, and modern styling. Employs modular component patterns, accessible semantics, responsive layouts across devices, and automated GitHub Actions build verification.",
-    techStack: ["TypeScript", "React 19", "Tailwind CSS", "Vite", "Node.js", "Git"],
-    keyFeatures: [
-      "100% Strict Type-Safety across state and component props",
-      "Automated GitHub Actions CI/CD pipeline",
-      "Zero-latency client-side transitions and sound design",
-      "Mobile-responsive layout with sub-second initial load",
+    categoryName: "Software Engineering",
+    badge: "TypeScript & React",
+    accentColor: "#f5c2e7", // Pink
+    bgGradient: "from-[#f5c2e7]/20 via-[#cba6f7]/10 to-[#181825]",
+    summary: "A high-performance web platform featuring strict type safety, responsive design, modular state management, and CI/CD pipelines.",
+    objective: "Engineer a clean full-stack web application with fast client-side rendering, accessible components, and automated GitHub Actions deployment.",
+    architecture: "Built with React, TypeScript, and modern styling. Employs component composition, strict types across all props and data stores, and automated production build testing on push.",
+    techStack: ["TypeScript", "React", "Tailwind CSS", "Vite", "Node.js", "Git"],
+    keyHighlights: [
+      "100% Strict Type Safety across state and props",
+      "Automated GitHub Actions CI/CD deployment pipeline",
+      "Sub-second initial load and responsive layout",
+      "Accessible design with smooth micro-interactions",
     ],
     demoUrl: "https://github.com",
     githubUrl: "https://github.com",
-    imageArt: {
-      primaryColor: "#ffe600",
-      secondaryColor: "#ff0055",
-      accentColor: "#ff6a00",
-      iconName: "Code2",
-      graphicLabel: "FULL STACK",
-    },
+    doodleIcon: "Code2",
   },
 ];

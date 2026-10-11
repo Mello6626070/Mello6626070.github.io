@@ -1,34 +1,40 @@
-# Persona 3 Reload × Watch Dogs 2 Portfolio
+# Catppuccin Illustrated CS Portfolio
 
-An interactive, responsive portfolio website built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS**. 
+An interactive, hand-drawn sketchbook developer portfolio built with **React 19**, **TypeScript**, **Vite**, and **Tailwind CSS**.
 
-Inspired by the visual design language of **Watch Dogs 2's Operations Deck** (duotone halftone project cards, `[ OBJECTIVE ]` & `[ BRIEF ]` mission deep dives) and **Persona 3 Reload** (dynamic slanted trapezoid menu tabs, midnight aquatic blue theme, and Social Link style skill rankings).
+Styled with the cozy, soothing **Catppuccin Palette** (Mocha Base `#1e1e2e`, Mauve `#cba6f7`, Lavender `#b4befe`, Peach `#fab387`, Mint `#a6e3a1`, and Sky `#89dceb`), combined with an artistic, illustrated drawing design inspired by whimsical floating clouds, concentric glowing moon rings, and hand-drawn doodle notes.
 
-Tailored for an aspiring Computer Science student seeking internship / OJT opportunities across:
+Crafted for an aspiring Computer Science student seeking internship / OJT opportunities across:
 - **Game Development** (Godot Engine 4 & Blender 3D)
-- **Cybersecurity** (Network traffic analysis & vulnerability auditing)
-- **Data Science & Analytics** (Exploratory data analysis & machine learning)
-- **Software Engineering** (Full-stack architecture & web platforms)
+- **Cybersecurity** (Network Packet Telemetry & Auditing)
+- **Data Science & Analytics** (Exploratory Data Analysis & Machine Learning)
+- **Software Engineering** (Full-Stack TypeScript & React)
 
 ---
 
 ## Features
 
-- **Watch Dogs 2 Operations Deck**:
-  - 2-Column responsive grid featuring duotone / halftone art cards with high-contrast colorways.
-  - Notification badges (`NEW`, `GODOT 4`, `BLENDER 3D`, `★`).
-  - Interactive **Mission Briefing Modal** with neon green brackets for `[ OBJECTIVE ]`, `[ BRIEF ]`, `[ TECH STACK ]`, and direct demo/GitHub links.
-  - Keyboard navigation (`ESC` to return, `←` / `→` arrows to cycle through projects).
-- **Persona 3 Reload UI Polish**:
-  - Cascading slanted trapezoid navigation ribbons (`-skew-x-12`) with high-contrast active tab highlight.
-  - Skill Matrix formatted as P3R Social Link / Party Status rank bars (`MAX`, `RANK 8`) with interactive inspect details.
-  - Academic & OJT Roadmap timeline.
-- **Audio Feedback**:
-  - Built-in zero-latency Web Audio API synthesizer for snappy menu clicks and hover ticks, with a 1-click global mute toggle.
-- **Easy Customization**:
-  - All profile details, projects, skills, and roadmap milestones are stored in isolated data files under `src/data/`.
+- **Illustrated Nightscape Hero**:
+  - Soft concentric radiant moon rings and stylized floating clouds drifting across the night sky.
+  - Hand-drawn doodle sparkles and stars (`✦`, `★`, `✨`).
+  - Vertical `SCROLLDOWN` prompt and stacked `P O R / T F O / L I O` typography.
+  - Interactive discipline shortcut cards.
+- **Sketchbook Project Gallery**:
+  - Illustrated project cards styled like sketchbook plates with organic borders and shadows.
+  - Discipline filter pills (`All Works`, `Game Dev`, `Cybersecurity`, `Data Science`, `Software Eng`).
+  - Detailed project inspect dialog with goals, architecture, highlights checklist, and live demo / GitHub links.
+- **Skill & Knowledge Board**:
+  - Illustrated sticker cards with confidence progress meters and practical context notes.
+- **Learning Journey Roadmap**:
+  - Step-by-step milestones tracing academic coursework, Godot game lab, security labs, and OJT readiness.
+- **Interactive Lo-Fi Audio Player**:
+  - Circular Play/Pause & Mute buttons with a live scrubber timeline.
+  - Plays in-browser synthesized ambient lo-fi chord progressions via Web Audio API (zero external assets, zero latency).
+- **Postcard Contact Section**:
+  - 1-click email copy with pastel confetti animation.
+  - Direct mail action and external links (GitHub, LinkedIn, itch.io, ArtStation).
 - **Automated GitHub Pages Deployment**:
-  - Pre-configured `.github/workflows/deploy.yml` GitHub Actions pipeline.
+  - Configured with `.github/workflows/deploy.yml` for automated static deployments on push to `main`.
 
 ---
 
@@ -43,7 +49,7 @@ npm install
 ```bash
 npm run dev
 ```
-Open your browser at `http://localhost:5173` to test the site.
+Open `http://localhost:5173` in your browser.
 
 ### 3. Build for Production
 ```bash
@@ -54,37 +60,22 @@ npm run build
 
 ## Customizing Your Information
 
-You do not need to touch UI layout code to update your portfolio. Simply edit the TypeScript files in `src/data/`:
-
-| File | What to update |
-|---|---|
-| [`src/data/profile.ts`](src/data/profile.ts) | Your name, school, degree, bio, email, GitHub/LinkedIn/Itch.io links, resume URL. |
-| [`src/data/projects.ts`](src/data/projects.ts) | Add, edit, or reorder your projects across Game Dev, Cybersecurity, Data Science, and Software Eng. |
-| [`src/data/skills.ts`](src/data/skills.ts) | Adjust your tools (Godot, Blender, Python, etc.), ranks (`MAX`, `RANK 8`), and descriptions. |
-| [`src/data/roadmap.ts`](src/data/roadmap.ts) | Customize your academic phases, certifications, and OJT objectives. |
+All personal content is stored in clean TypeScript files under `src/data/`:
+- [`src/data/profile.ts`](src/data/profile.ts): Bio, university, email, social links, resume URL.
+- [`src/data/projects.ts`](src/data/projects.ts): Your Godot games, Blender assets, security tools, and data projects.
+- [`src/data/skills.ts`](src/data/skills.ts): Your tools, confidence percentages, and practical notes.
+- [`src/data/roadmap.ts`](src/data/roadmap.ts): Your academic phases and internship deliverables.
 
 ---
 
 ## Deploying to GitHub Pages
 
-This repository is ready for automatic deployment using GitHub Actions:
-
-1. **Initialize Git & Push to GitHub**:
+1. Push your repository to GitHub:
    ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: P3R x WD2 Portfolio"
-   git branch -M main
    git remote add origin https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>.git
    git push -u origin main
    ```
-
-2. **Enable GitHub Pages in Repository Settings**:
-   - Go to your GitHub repository on github.com.
-   - Navigate to **Settings** → **Pages** (under the "Code and automation" section).
-   - Under **Build and deployment** → **Source**, select **GitHub Actions**.
-
-3. **Automatic Deployment**:
-   - Every time you push to `main`, GitHub Actions will automatically compile and publish your site!
-   - Your live site will be available at:
-     `https://<YOUR_USERNAME>.github.io/<YOUR_REPOSITORY>/`
+2. In your repository on GitHub:
+   - Go to **Settings** → **Pages**
+   - Under **Build and deployment** → **Source**, select **GitHub Actions**
+3. GitHub Actions will automatically compile and deploy your portfolio to `https://<YOUR_USERNAME>.github.io/<YOUR_REPOSITORY>/`!

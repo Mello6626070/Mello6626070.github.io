@@ -1,65 +1,69 @@
-export interface RoadmapPhase {
+export interface JourneyMilestone {
   id: string;
-  phaseCode: string;
+  step: string;
   title: string;
-  status: 'CURRENT TARGET' | 'COMPLETED' | 'IN PROGRESS';
-  targetPeriod: string;
+  timeframe: string;
+  status: 'Current Goal' | 'In Progress' | 'Completed';
+  color: string;
   description: string;
-  keyDeliverables: string[];
+  bulletPoints: string[];
 }
 
-export const roadmapData: RoadmapPhase[] = [
+export const roadmapData: JourneyMilestone[] = [
   {
     id: "ojt-internship",
-    phaseCode: "PHASE 04 // TARGET",
-    title: "OJT / Industry Internship Deployment",
-    status: "CURRENT TARGET",
-    targetPeriod: "2026 Academic Year",
-    description: "Actively seeking an On-the-Job Training (OJT) or internship placement. Prepared to bring solid foundations in Godot/Blender game development, cybersecurity packet analysis, data science modeling, or software engineering into production engineering teams.",
-    keyDeliverables: [
-      "Immediate availability for remote or hybrid technical internship roles",
-      "Eager to learn team development workflows, code reviews, and sprints",
-      "Demonstrated ability to self-teach technologies across multiple CS domains",
-      "Strong work ethic and collaborative communication",
+    step: "04",
+    title: "Internship / OJT Placement",
+    timeframe: "2026 Academic Season",
+    status: "Current Goal",
+    color: "#f5c2e7", // Pink / Mauve
+    description: "Actively seeking an On-the-Job Training (OJT) or technical internship where I can contribute to game development, security analysis, data engineering, or software development.",
+    bulletPoints: [
+      "Ready to join production engineering workflows, code reviews, and sprints",
+      "Quick to learn new frameworks and adapt across domains",
+      "Strong work ethic, curious mindset, and reliable communication",
     ],
   },
   {
-    id: "cs-degree",
-    phaseCode: "PHASE 03 // ACADEMIC",
-    title: "B.S. in Computer Science Coursework",
-    status: "IN PROGRESS",
-    targetPeriod: "University Program",
-    description: "Pursuing rigorous Computer Science degree coursework covering Data Structures & Algorithms, Object-Oriented Programming, Operating Systems, Database Management Systems, and Software Design.",
-    keyDeliverables: [
-      "Solid algorithmic problem-solving and complexity analysis (Big-O)",
-      "Systems understanding (Memory management, processes, threads)",
-      "Consistent academic performance and collaborative project leads",
+    id: "academic-degree",
+    step: "03",
+    title: "B.S. in Computer Science",
+    timeframe: "University Coursework",
+    status: "In Progress",
+    color: "#cba6f7", // Mauve
+    description: "Deepening theoretical and practical foundations in Data Structures & Algorithms, Object-Oriented Software Design, Operating Systems, and Relational Databases.",
+    bulletPoints: [
+      "Algorithmic problem solving and Big-O computational analysis",
+      "Systems architecture, concurrency, and operating systems memory models",
+      "Consistently active in technical coursework and collaborative projects",
     ],
   },
   {
-    id: "game-dev-lab",
-    phaseCode: "PHASE 02 // CREATIVE",
-    title: "Godot Engine & Blender Game Lab",
-    status: "COMPLETED",
-    targetPeriod: "Self-Directed Projects",
-    description: "Built playable interactive games in Godot 4 and crafted custom 3D low-poly environment assets in Blender. Focused on tight player controllers, custom shaders, and cross-platform export.",
-    keyDeliverables: [
-      "Completed 2D/3D physics-based game prototypes",
-      "Modular low-poly 3D models with clean UV unwraps",
-      "Published playable web builds to itch.io",
+    id: "game-3d-lab",
+    step: "02",
+    title: "Godot Engine & 3D Modeling Lab",
+    timeframe: "Creative Exploration",
+    status: "Completed",
+    color: "#fab387", // Peach
+    description: "Built playable game prototypes in Godot 4 and modeled low-poly 3D environmental assets in Blender, focusing on player feel and asset pipeline efficiency.",
+    bulletPoints: [
+      "Crafted 2D/3D physics character controllers with state machines",
+      "Created modular low-poly models with clean UV unwraps in Blender",
+      "Published interactive playable web builds to itch.io",
     ],
   },
   {
-    id: "security-data",
-    phaseCode: "PHASE 01 // FOUNDATIONS",
+    id: "cyber-data-foundations",
+    step: "01",
     title: "Cybersecurity & Data Science Foundations",
-    status: "COMPLETED",
-    targetPeriod: "Practical Labs & Projects",
-    description: "Completed packet-level network analysis labs, Python automated data cleaning pipelines, and supervised machine learning model evaluations.",
-    keyDeliverables: [
-      "Built custom packet sniffer and protocol dissection scripts",
-      "Analyzed tabular datasets and trained ML models with Scikit-learn",
-      "Linux terminal proficiency and automated Bash scripting",
+    timeframe: "Core Labs & Projects",
+    status: "Completed",
+    color: "#a6e3a1", // Green
+    description: "Completed hands-on packet capture labs, written Python network sniffers, and developed automated data analysis pipelines.",
+    bulletPoints: [
+      "Implemented packet sniffer and ARP detection scripts with Scapy",
+      "Conducted exploratory data analyses and trained Scikit-learn models",
+      "Linux command line proficiency and automated Bash scripting",
     ],
   },
 ];

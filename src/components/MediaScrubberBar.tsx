@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Disc3 } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Disc3, Music } from 'lucide-react';
 import { soundManager } from '../utils/soundEffects';
 
 export const MediaScrubberBar: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(soundManager.getMuted());
-  const [progress, setProgress] = useState(35); // percentage for the timeline bar
+  const [progress, setProgress] = useState(42);
 
   useEffect(() => {
     let interval: number;
     if (isPlaying) {
       interval = window.setInterval(() => {
-        setProgress((prev) => (prev >= 100 ? 0 : prev + 0.5));
+        setProgress((prev) => (prev >= 100 ? 0 : prev + 0.4));
       }, 100);
     }
     return () => clearInterval(interval);
@@ -39,22 +39,22 @@ export const MediaScrubberBar: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#14141b] border-t border-[#23232e] px-4 py-2.5 shadow-2xl flex items-center gap-4 text-xs font-mono select-none">
-      <div className="max-w-7xl mx-auto w-full flex items-center gap-3 sm:gap-6">
+    <div className="w-full bg-[#181825] border-t-2 border-[#313244] px-4 py-3 shadow-2xl flex items-center select-none z-30">
+      <div className="max-w-7xl mx-auto w-full flex items-center gap-4 sm:gap-6">
         
-        {/* Left Circular Control Buttons (Exact Match to Reference Screenshots) */}
-        <div className="flex items-center gap-2 shrink-0">
+        {/* Left Circular Control Buttons (Exact Match to Inspiration Images) */}
+        <div className="flex items-center gap-2.5 shrink-0">
           {/* Circular Play / Pause Button */}
           <button
             onClick={togglePlay}
             onMouseEnter={() => soundManager.playHover()}
-            title={isPlaying ? 'Pause Ambient Audio' : 'Play Ambient Lo-Fi Synth'}
-            className="w-9 h-9 rounded-full bg-white hover:bg-[#01ef01] text-black flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md cursor-pointer"
+            title={isPlaying ? 'Pause Lo-Fi Ambient Synth' : 'Play Lo-Fi Ambient Synth'}
+            className="w-10 h-10 rounded-full bg-white hover:bg-[#cba6f7] text-[#11111b] flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-[2px_2px_0px_#11111b] border-2 border-[#11111b] cursor-pointer"
           >
             {isPlaying ? (
-              <Pause size={14} className="fill-black" />
+              <Pause size={14} className="fill-[#11111b]" />
             ) : (
-              <Play size={14} className="fill-black ml-0.5" />
+              <Play size={14} className="fill-[#11111b] ml-0.5" />
             )}
           </button>
 
@@ -62,47 +62,47 @@ export const MediaScrubberBar: React.FC = () => {
           <button
             onClick={toggleMute}
             onMouseEnter={() => soundManager.playHover()}
-            title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-            className="w-9 h-9 rounded-full bg-[#20202a] hover:bg-[#2c2c3a] text-white flex items-center justify-center transition-colors cursor-pointer border border-[#30303e]"
+            title={isMuted ? 'Unmute' : 'Mute'}
+            className="w-10 h-10 rounded-full bg-[#1e1e2e] hover:bg-[#313244] text-[#cdd6f4] flex items-center justify-center transition-colors cursor-pointer border-2 border-[#313244] shadow-[2px_2px_0px_#11111b]"
           >
-            {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} className="text-[#01ef01]" />}
+            {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} className="text-[#a6e3a1]" />}
           </button>
         </div>
 
         {/* Center: Track Label & Interactive Scrubber Timeline */}
         <div className="flex-1 flex flex-col justify-center min-w-0">
-          <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1">
-            <span className="flex items-center gap-2 truncate font-bold">
-              <Disc3 size={13} className={`text-[#01ef01] ${isPlaying ? 'animate-spin' : ''}`} />
-              <span className="truncate">DARK HOUR // LO-FI AMBIENT SYNTH</span>
+          <div className="flex items-center justify-between text-xs text-[#cdd6f4] mb-1.5 font-mono">
+            <span className="flex items-center gap-2 truncate font-semibold">
+              <Disc3 size={14} className={`text-[#cba6f7] ${isPlaying ? 'animate-spin' : ''}`} />
+              <span className="truncate">Cozy Lo-Fi Study Synth // Ambient Chords</span>
               {isPlaying && (
-                <span className="hidden sm:inline text-[9px] bg-[#01ef01] text-black px-1.5 py-0.2 font-black">
-                  LIVE
+                <span className="hidden sm:inline text-[10px] bg-[#a6e3a1] text-[#11111b] px-2 py-0.2 rounded-full font-extrabold shadow-xs">
+                  PLAYING
                 </span>
               )}
             </span>
-            <span className="text-slate-400 font-mono text-[10px] hidden sm:inline">
-              {isPlaying ? 'PLAYING WEB AUDIO' : 'CLICK PLAY TO LISTEN'}
+            <span className="text-[#a6adc8] text-[11px] hidden sm:inline font-hand text-base">
+              {isPlaying ? 'relax & browse sketches ~' : 'click play for background lo-fi ☕'}
             </span>
           </div>
 
-          {/* Scrubber Progress Bar (Like in Screenshot 1 & 2) */}
+          {/* Scrubber Progress Bar (Like in Inspiration Image 1 & 2) */}
           <div
             onClick={handleSeek}
-            className="relative h-2 w-full bg-[#2a2a38] rounded-full overflow-hidden cursor-pointer group"
+            className="relative h-2.5 w-full bg-[#313244] rounded-full overflow-hidden cursor-pointer group shadow-inner"
           >
-            {/* Filled Progress Line with Watch Dogs 2 Coral / Magenta Accent */}
+            {/* Filled Progress Line with Catppuccin Mauve to Pink Gradient */}
             <div
-              className="h-full bg-gradient-to-r from-[#e82f41] to-[#ff007f] group-hover:brightness-125 transition-all duration-100 rounded-full"
+              className="h-full bg-gradient-to-r from-[#cba6f7] via-[#f5c2e7] to-[#fab387] group-hover:brightness-110 transition-all duration-100 rounded-full"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
-        {/* Right: Quick Status */}
-        <div className="hidden md:flex items-center gap-2 shrink-0 text-[10px] text-slate-400 font-mono border-l border-[#262634] pl-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#01ef01] animate-ping" />
-          <span>SYNTH ENGINE READY</span>
+        {/* Right Status */}
+        <div className="hidden md:flex items-center gap-2 shrink-0 text-xs text-[#a6adc8] font-mono border-l-2 border-[#313244] pl-5">
+          <Music size={14} className="text-[#fab387]" />
+          <span>Web Audio Lo-Fi</span>
         </div>
 
       </div>
