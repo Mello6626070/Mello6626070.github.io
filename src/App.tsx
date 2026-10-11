@@ -7,6 +7,7 @@ import { BriefingModal } from './components/BriefingModal';
 import { SkillDeck } from './components/SkillDeck';
 import { RoadmapView } from './components/RoadmapView';
 import { ContactView } from './components/ContactView';
+import { MediaScrubberBar } from './components/MediaScrubberBar';
 import { Footer } from './components/Footer';
 import { projectsData } from './data/projects';
 import type { ProjectOperation } from './data/projects';
@@ -36,16 +37,16 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#08090d] text-slate-100 flex flex-col font-sans selection:bg-[#ff007f] selection:text-white">
+    <div className="min-h-screen bg-[#07070a] text-white flex flex-col font-sans selection:bg-[#01ef01] selection:text-black">
       
-      {/* Persona 3 Reload Navigation Header (No Phone Top Bar) */}
+      {/* Persona 3 Reload Navigation Header */}
       <P3RNavbar
         activeTab={activeTab}
         onTabChange={setActiveTab}
         statusText={profileData.headline}
       />
 
-      {/* Hero Section */}
+      {/* Hero Section with Artistic Nightscape Moon & Clouds */}
       <HeroSection
         onNavigate={setActiveTab}
         onFilterDiscipline={(disc) => {
@@ -81,7 +82,10 @@ export const App: React.FC = () => {
         />
       )}
 
-      {/* Footer */}
+      {/* Interactive Media Scrubber Player Bar (from Inspiration Images) */}
+      <MediaScrubberBar />
+
+      {/* Footer (Watch Dogs 2 Bottom White Bar with Return ESC) */}
       <Footer />
 
     </div>

@@ -11,16 +11,57 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onFilterDiscipline }) => {
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 border-b border-[#1f1f26] bg-gradient-to-b from-[#07070a] via-[#0d0d12] to-[#07070a]">
-      {/* Decorative Watch Dogs 2 subtle scanlines and dither */}
-      <div className="absolute inset-0 bg-scanlines opacity-40 pointer-events-none" />
-      <div className="absolute inset-0 bg-halftone opacity-30 pointer-events-none" />
-
-      {/* Large faint background angled typographic watermark */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none opacity-5 font-display font-black text-8xl md:text-[14rem] tracking-tighter text-white transform -rotate-12 translate-x-20">
-        OPERATIONS
+    <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#1f1f26] bg-[#07070a]">
+      
+      {/* =========================================================================
+          Artistic Moon & Cloud Nightscape Layer (Inspired by Reference Images)
+          ========================================================================= */}
+      
+      {/* Concentric Radiant Moon Rings (Persona 3 Full Moon / Nightscape) */}
+      <div className="absolute right-[-5%] top-[10%] md:right-[5%] md:top-[5%] w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] md:w-[620px] md:h-[620px] pointer-events-none select-none flex items-center justify-center opacity-30 md:opacity-45">
+        {/* Outer Ring 4 */}
+        <div className="absolute w-full h-full rounded-full border border-[#7e22ce]/20 bg-[#581c87]/5" />
+        {/* Ring 3 */}
+        <div className="absolute w-[80%] h-[80%] rounded-full border border-[#7e22ce]/30 bg-[#6b21a8]/10" />
+        {/* Ring 2 */}
+        <div className="absolute w-[60%] h-[60%] rounded-full border border-[#9333ea]/40 bg-[#7c3aed]/15" />
+        {/* Center Glowing Moon Core */}
+        <div className="absolute w-[40%] h-[40%] rounded-full bg-gradient-to-br from-[#c084fc] via-[#a855f7] to-[#6b21a8] shadow-[0_0_80px_rgba(168,85,247,0.4)]" />
       </div>
 
+      {/* Stylized Floating Night Cloud Layers drifting across the Moon */}
+      <div className="absolute right-[5%] top-[25%] w-48 h-10 rounded-full bg-[#181824]/90 backdrop-blur-xs border border-[#2b2b3d] pointer-events-none animate-pulse" />
+      <div className="absolute right-[18%] top-[45%] w-64 h-12 rounded-full bg-[#14141e]/95 backdrop-blur-xs border border-[#272738] pointer-events-none" />
+      <div className="absolute right-[2%] top-[65%] w-56 h-10 rounded-full bg-[#101018]/90 border border-[#222232] pointer-events-none" />
+
+      {/* Twinkling Night Stars */}
+      <div className="absolute right-[25%] top-[15%] w-1.5 h-1.5 rounded-full bg-white opacity-80 animate-ping" />
+      <div className="absolute right-[40%] top-[30%] w-1 h-1 rounded-full bg-[#00f0ff] opacity-70" />
+      <div className="absolute right-[10%] top-[75%] w-1 h-1 rounded-full bg-white opacity-60" />
+      <div className="absolute left-[30%] top-[20%] w-1 h-1 rounded-full bg-[#01ef01] opacity-50" />
+
+      {/* Halftone & Scanline Overlays */}
+      <div className="absolute inset-0 bg-scanlines opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-halftone opacity-25 pointer-events-none" />
+
+      {/* Vertical 'SCROLLDOWN' Indicator on Left Edge (from Image 2) */}
+      <div className="hidden xl:flex absolute left-6 top-1/2 -translate-y-1/2 flex-col items-center gap-3 text-slate-500 font-mono text-[10px] tracking-widest select-none">
+        <span className="[writing-mode:vertical-lr] uppercase tracking-[0.3em] font-bold">
+          SCROLLDOWN
+        </span>
+        <div className="w-[1px] h-12 bg-slate-600" />
+      </div>
+
+      {/* Vertical Stacked 'P O R / T F O / L I O' on Far Right Edge (from Image 1) */}
+      <div className="hidden xl:flex absolute right-6 top-1/2 -translate-y-1/2 flex-col items-center gap-1 text-slate-600 font-display font-black text-xs tracking-widest select-none opacity-60">
+        <span>P O R</span>
+        <span>T F O</span>
+        <span>L I O</span>
+      </div>
+
+      {/* =========================================================================
+          Main Hero Content
+          ========================================================================= */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
@@ -34,12 +75,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onFilterDi
             </div>
 
             {/* Slanted High-Contrast Display Heading */}
-            <div className="space-y-1">
+            <div className="space-y-2">
               <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-white leading-none">
-                <span className="block transform -skew-x-6 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                <span className="block transform -skew-x-6 text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                   {profileData.name}
                 </span>
-                <span className="inline-block transform -skew-x-6 text-white bg-black px-3 py-1 border-l-4 border-[#01ef01] mt-2 font-mono text-2xl sm:text-3xl tracking-widest">
+                <span className="inline-block transform -skew-x-6 text-white bg-black px-3.5 py-1.5 border-l-4 border-[#01ef01] mt-2 font-mono text-xl sm:text-2xl md:text-3xl tracking-widest shadow-xl">
                   [ STATUS: READY FOR OJT / INTERNSHIP ]
                 </span>
               </h1>
@@ -72,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onFilterDi
                         onNavigate('operations');
                       }}
                       onMouseEnter={() => soundManager.playHover()}
-                      className={`text-left p-2.5 border border-[#24242e] bg-[#121217] hover:bg-[#191921] transition-all cursor-pointer group clip-tag ${item.border}`}
+                      className={`text-left p-2.5 border border-[#24242e] bg-[#121217]/95 backdrop-blur-xs hover:bg-[#191921] transition-all cursor-pointer group clip-tag ${item.border}`}
                     >
                       <div className="flex items-center gap-1.5 text-slate-300 group-hover:text-white mb-1">
                         <Icon size={14} />
@@ -133,7 +174,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onFilterDi
 
           {/* Right Column: Watch Dogs 2 Dark Carbon Stat Card */}
           <div className="lg:col-span-4">
-            <div className="relative border-2 border-[#262632] bg-[#101015] p-5 shadow-[0_4px_25px_rgba(0,0,0,0.7)] clip-p3r-card">
+            <div className="relative border-2 border-[#262632] bg-[#101015]/95 backdrop-blur-xs p-5 shadow-[0_8px_32px_rgba(0,0,0,0.85)] clip-p3r-card">
               
               {/* Corner tech badge */}
               <div className="flex items-center justify-between border-b border-[#21212b] pb-3 mb-4">
