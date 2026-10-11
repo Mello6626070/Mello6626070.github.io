@@ -19,7 +19,7 @@ export const ContactView: React.FC = () => {
         particleCount: 60,
         spread: 70,
         origin: { y: 0.8 },
-        colors: ['#ff007f', '#00ff66', '#00f0ff', '#ffe600', '#ffffff'],
+        colors: ['#01ef01', '#ffffff', '#e82f41', '#1f9cf7'],
       });
     } catch {
       // Confetti fallback
@@ -29,17 +29,17 @@ export const ContactView: React.FC = () => {
   };
 
   return (
-    <section className="py-12 bg-[#08090d] relative overflow-hidden">
+    <section className="py-12 bg-[#07070a] relative overflow-hidden">
       
       {/* Decorative scanlines */}
-      <div className="absolute inset-0 bg-scanlines opacity-45 pointer-events-none" />
+      <div className="absolute inset-0 bg-scanlines opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="border-b-2 border-[#1e222f] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="border-b-2 border-[#1e1e26] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="text-xs font-mono text-[#ff007f] uppercase tracking-widest mb-1 flex items-center gap-1.5 font-bold">
+            <div className="text-xs font-mono text-[#01ef01] uppercase tracking-widest mb-1 flex items-center gap-1.5 font-bold">
               <Mail size={14} />
               <span>DIRECT COMMS // INTERNSHIP / OJT INQUIRIES</span>
             </div>
@@ -47,8 +47,8 @@ export const ContactView: React.FC = () => {
               CONNECT & COLLABORATE
             </h2>
           </div>
-          <div className="font-mono text-xs text-slate-400 bg-[#12141c] px-3 py-1.5 border border-[#222634]">
-            STATUS: <span className="text-[#00ff66] font-bold">INBOX OPEN</span>
+          <div className="font-mono text-xs text-slate-400 bg-[#121217] px-3 py-1.5 border border-[#23232c]">
+            STATUS: <span className="text-[#01ef01] font-bold">INBOX OPEN</span>
           </div>
         </div>
 
@@ -57,9 +57,9 @@ export const ContactView: React.FC = () => {
           
           {/* Left Column: Direct Email & Quick Action Card */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="border-2 border-[#ff007f]/45 bg-[#10121a] p-6 clip-p3r-card shadow-[0_0_30px_rgba(255,0,127,0.15)]">
+            <div className="border-2 border-[#2c2c36] bg-[#101015] p-6 clip-p3r-card shadow-[0_4px_25px_rgba(0,0,0,0.8)]">
               
-              <div className="text-xs font-mono text-[#00ff66] uppercase tracking-widest mb-2 font-bold">
+              <div className="text-xs font-mono text-[#01ef01] uppercase tracking-widest mb-2 font-bold">
                 // OJT / INTERNSHIP PLACEMENT
               </div>
               <h3 className="text-2xl font-display font-black text-white uppercase mb-3">
@@ -70,9 +70,9 @@ export const ContactView: React.FC = () => {
               </p>
 
               {/* Email Copy Card */}
-              <div className="p-4 bg-[#0a0b10] border-2 border-[#1e222f] flex flex-col sm:flex-row items-center justify-between gap-3 mb-6">
+              <div className="p-4 bg-[#08080b] border-2 border-[#1e1e26] flex flex-col sm:flex-row items-center justify-between gap-3 mb-6">
                 <div className="flex items-center gap-3 w-full sm:w-auto">
-                  <div className="p-2.5 bg-[#151722] text-[#00ff66] border border-[#262a3c]">
+                  <div className="p-2.5 bg-[#171720] text-[#01ef01] border border-[#262633]">
                     <Mail size={18} />
                   </div>
                   <div>
@@ -86,7 +86,7 @@ export const ContactView: React.FC = () => {
                 <button
                   onClick={handleCopyEmail}
                   onMouseEnter={() => soundManager.playHover()}
-                  className="w-full sm:w-auto px-4 py-2.5 font-display font-black text-xs tracking-wider bg-white hover:bg-[#ff007f] text-black hover:text-white transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                  className="w-full sm:w-auto px-4 py-2.5 font-display font-black text-xs tracking-wider bg-white hover:bg-[#01ef01] text-black transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
                   {copied ? <Check size={14} className="text-green-800" /> : <Copy size={14} />}
                   <span>{copied ? 'EMAIL COPIED!' : 'COPY EMAIL'}</span>
@@ -98,7 +98,7 @@ export const ContactView: React.FC = () => {
                 <a
                   href={`mailto:${profileData.links.email}?subject=Internship%20%2F%20OJT%20Inquiry`}
                   onClick={() => soundManager.playConfirm()}
-                  className="px-6 py-3 font-display font-black text-xs tracking-widest bg-[#ff007f] hover:bg-white text-white hover:text-black transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(255,0,127,0.4)]"
+                  className="px-6 py-3 font-display font-black text-xs tracking-widest bg-[#01ef01] hover:bg-white text-black transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(1,239,1,0.3)]"
                 >
                   <Send size={14} />
                   <span>SEND EMAIL NOW</span>
@@ -107,7 +107,7 @@ export const ContactView: React.FC = () => {
                 <a
                   href={profileData.links.resumeUrl}
                   onClick={() => soundManager.playSelect()}
-                  className="px-5 py-3 font-display font-bold text-xs tracking-widest bg-[#151722] hover:bg-[#202434] text-white border border-[#2b3042] transition-colors flex items-center gap-2"
+                  className="px-5 py-3 font-display font-bold text-xs tracking-widest bg-[#171720] hover:bg-[#232330] text-white border border-[#2b2b38] transition-colors flex items-center gap-2"
                 >
                   <FileText size={14} />
                   <span>VIEW RESUME / CV</span>
@@ -119,7 +119,7 @@ export const ContactView: React.FC = () => {
 
           {/* Right Column: Platform Links Stack */}
           <div className="lg:col-span-5 space-y-3">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00ff66] mb-2 font-bold">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#01ef01] mb-2 font-bold">
               // EXTERNAL PLATFORMS & PORTFOLIOS
             </div>
 
@@ -130,7 +130,7 @@ export const ContactView: React.FC = () => {
                 url: profileData.links.github,
                 icon: GithubIcon,
                 tag: 'CODE',
-                color: 'hover:border-[#00ff66] hover:text-[#00ff66]',
+                borderColor: 'hover:border-[#01ef01]',
               },
               {
                 label: 'LINKEDIN PROFILE',
@@ -138,7 +138,7 @@ export const ContactView: React.FC = () => {
                 url: profileData.links.linkedin,
                 icon: LinkedinIcon,
                 tag: 'NETWORK',
-                color: 'hover:border-[#00f0ff] hover:text-[#00f0ff]',
+                borderColor: 'hover:border-white',
               },
               {
                 label: 'ITCH.IO PROFILE',
@@ -146,7 +146,7 @@ export const ContactView: React.FC = () => {
                 url: profileData.links.itchio,
                 icon: Gamepad2,
                 tag: 'GAMES',
-                color: 'hover:border-[#ff007f] hover:text-[#ff007f]',
+                borderColor: 'hover:border-[#1f9cf7]',
               },
               {
                 label: 'ARTSTATION / 3D SUITE',
@@ -154,7 +154,7 @@ export const ContactView: React.FC = () => {
                 url: profileData.links.artstation,
                 icon: Box,
                 tag: '3D ART',
-                color: 'hover:border-[#ffe600] hover:text-[#ffe600]',
+                borderColor: 'hover:border-[#ea9040]',
               },
             ].map((item, idx) => {
               const Icon = item.icon;
@@ -166,15 +166,15 @@ export const ContactView: React.FC = () => {
                   rel="noreferrer"
                   onMouseEnter={() => soundManager.playHover()}
                   onClick={() => soundManager.playSelect()}
-                  className={`block p-4 border border-[#1f2330] bg-[#11131a] hover:bg-[#181a25] transition-all transform -skew-x-6 cursor-pointer group ${item.color}`}
+                  className={`block p-4 border border-[#20202a] bg-[#101015] hover:bg-[#171720] transition-all transform -skew-x-6 cursor-pointer group ${item.borderColor}`}
                 >
                   <div className="flex items-center justify-between transform skew-x-6">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-[#171a24] text-white border border-[#272c3d]">
+                      <div className="p-2 bg-[#171720] text-white border border-[#2b2b38]">
                         <Icon size={18} />
                       </div>
                       <div>
-                        <div className="font-display font-bold text-sm tracking-wider text-white group-hover:text-[#ff007f] transition-colors">
+                        <div className="font-display font-bold text-sm tracking-wider text-white group-hover:text-[#01ef01] transition-colors">
                           {item.label}
                         </div>
                         <div className="text-[11px] font-mono text-slate-400">
@@ -184,7 +184,7 @@ export const ContactView: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono px-2 py-0.5 bg-[#181b26] text-[#b0b8cb] border border-[#272c3d] font-bold">
+                      <span className="text-[10px] font-mono px-2 py-0.5 bg-[#171720] text-slate-300 border border-[#2b2b38] font-bold">
                         {item.tag}
                       </span>
                       <ExternalLink size={14} className="text-slate-400 group-hover:text-white" />

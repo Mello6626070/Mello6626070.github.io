@@ -41,13 +41,13 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
     : projectsData.filter((p) => p.discipline === activeFilter);
 
   return (
-    <section className="py-12 bg-[#08090d] relative">
+    <section className="py-12 bg-[#07070a] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-[#1e222f] pb-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-[#1e1e26] pb-6 mb-8">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#ff007f] uppercase tracking-widest mb-1 font-bold">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#01ef01] uppercase tracking-widest mb-1 font-bold">
               <Layers size={14} />
               <span>WATCH DOGS 2 OPERATIONS DECK // PORTFOLIO SHOWCASE</span>
             </div>
@@ -56,8 +56,8 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
             </h2>
           </div>
 
-          <div className="font-mono text-xs text-slate-400 bg-[#12141c] px-3 py-1.5 border border-[#222634]">
-            SHOWING <span className="text-[#00ff66] font-bold">{filteredProjects.length}</span> OF <span className="text-white font-bold">{projectsData.length}</span> ACTIVE OPS
+          <div className="font-mono text-xs text-slate-400 bg-[#121217] px-3 py-1.5 border border-[#23232c]">
+            SHOWING <span className="text-[#01ef01] font-bold">{filteredProjects.length}</span> OF <span className="text-white font-bold">{projectsData.length}</span> ACTIVE OPS
           </div>
         </div>
 
@@ -77,8 +77,8 @@ export const OperationsGrid: React.FC<OperationsGridProps> = ({
                 onMouseEnter={() => soundManager.playHover()}
                 className={`px-4 py-2 text-xs font-display font-bold tracking-wider transition-all transform -skew-x-12 cursor-pointer ${
                   isActive
-                    ? 'bg-white text-black shadow-[0_0_15px_rgba(255,0,127,0.4)] border-l-4 border-[#ff007f]'
-                    : 'bg-[#12141c] text-[#9ca2b5] hover:bg-[#1a1d27] hover:text-white border border-[#222634]'
+                    ? 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.3)] border-l-4 border-[#e82f41]'
+                    : 'bg-[#121217] text-[#9ca2b5] hover:bg-[#1a1a22] hover:text-white border border-[#23232c]'
                 }`}
               >
                 <span className="inline-block transform skew-x-12">
