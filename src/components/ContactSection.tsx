@@ -67,7 +67,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ isDark: _isDark 
     {
       id: 'facebook',
       label: 'Facebook',
-      handle: 'Anthony Alarcon',
+      handle: 'Je Anthony Alarcon',
       icon: FacebookIcon,
       url: profileData.links.facebook,
       color: '#1877f2',

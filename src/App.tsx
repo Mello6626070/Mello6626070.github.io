@@ -156,7 +156,7 @@ export const App: React.FC = () => {
             rel="noreferrer"
             onMouseEnter={() => soundManager.playHover()}
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4c4f69] dark:bg-[#cba6f7] text-[#eff1f5] dark:text-[#11111b] flex items-center justify-center hover:scale-110 active:scale-90 transition-transform shadow-[0px_2px_4px_rgba(76,79,105,0.25)] dark:shadow-[0px_2px_6px_rgba(0,0,0,0.6)]"
-            title="Facebook (J Anthony Alarcon)"
+            title="Facebook (Je Anthony Alarcon)"
           >
             <FacebookIcon size={16} />
           </a>
