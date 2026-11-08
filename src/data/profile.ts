@@ -13,6 +13,7 @@ export interface ProfileData {
   links: {
     email: string;
     secondaryEmail: string;
+    alternateEmail?: string;
     phone: string;
     instagram: string;
     facebook: string;
@@ -51,8 +52,9 @@ export const profileData: ProfileData = {
   bio: "Hi! I'm Anthony, a 4th-year Computer Science student at STI College Lucena. When I'm not studying or learning new languages and tools, I enjoy playing video games, listening to music, watching anime and shows, reading, 3D modeling in Blender, photography, and exploring science and math.",
   doodleQuote: "exploring games, 3d art, code, and science",
   links: {
-    email: "jesusanthonygicana@proton.me",
+    email: "j.anthonyalarcon@proton.me",
     secondaryEmail: "j.anthonyalarcon@gmail.com",
+    alternateEmail: "jesusanthonygicana@proton.me",
     phone: "09624605483",
     instagram: "https://www.instagram.com/j.anthonyalarcon/",
     facebook: "https://www.facebook.com/profile.php?id=61568805702116",

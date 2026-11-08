@@ -10,48 +10,27 @@ interface ContactSectionProps {
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ isDark: _isDark = false }) => {
-  const [copiedPrimary, setCopiedPrimary] = useState(false);
-  const [copiedSecondary, setCopiedSecondary] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-  const handleCopyEmail = (email: string, isSecondary = false) => {
+  const handleCopy = (text: string, key: string, triggerConfetti = true) => {
     soundManager.playConfirm();
-    navigator.clipboard.writeText(email);
-    if (isSecondary) {
-      setCopiedSecondary(true);
-      setTimeout(() => setCopiedSecondary(false), 2500);
-    } else {
-      setCopiedPrimary(true);
-      setTimeout(() => setCopiedPrimary(false), 2500);
-    }
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => {
+      setCopiedKey((prev) => (prev === key ? null : prev));
+    }, 2500);
 
-    try {
-      confetti({
-        particleCount: 45,
-        spread: 60,
-        origin: { y: 0.65 },
-        colors: ['#fe640b', '#df8e1d', '#cba6f7', '#f5c2e7', '#a6e3a1'],
-      });
-    } catch {
-      // Confetti fallback
-    }
-  };
-
-  const handleCopyPhone = (phone: string) => {
-    soundManager.playConfirm();
-    navigator.clipboard.writeText(phone);
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2500);
-
-    try {
-      confetti({
-        particleCount: 45,
-        spread: 60,
-        origin: { y: 0.65 },
-        colors: ['#fe640b', '#df8e1d', '#cba6f7', '#f5c2e7', '#a6e3a1'],
-      });
-    } catch {
-      // Confetti fallback
+    if (triggerConfetti) {
+      try {
+        confetti({
+          particleCount: 45,
+          spread: 60,
+          origin: { y: 0.65 },
+          colors: ['#fe640b', '#df8e1d', '#cba6f7', '#f5c2e7', '#a6e3a1'],
+        });
+      } catch {
+        // Confetti fallback
+      }
     }
   };
 
@@ -149,39 +128,60 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ isDark: _isDark 
                 </span>
               </div>
               <button
-                onClick={() => handleCopyEmail(profileData.links.email, false)}
+                onClick={() => handleCopy(profileData.links.email, 'primary')}
                 onMouseEnter={() => soundManager.playHover()}
                 className="shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-[#fe640b]/15 text-[#fe640b] dark:text-[#fab387] hover:bg-[#fe640b] hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
                 title="Copy primary email"
               >
-                {copiedPrimary ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
-                <span>{copiedPrimary ? 'copied!' : 'copy'}</span>
+                {copiedKey === 'primary' ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
+                <span>{copiedKey === 'primary' ? 'copied!' : 'copy'}</span>
               </button>
             </div>
 
-            {/* Secondary Email */}
+            {/* Secondary Email (Gmail) */}
             <div className="p-3 sm:p-3.5 rounded-xl border-2 border-[#ccd0da] dark:border-[#313244] bg-white/70 dark:bg-[#181825]/70 flex items-center justify-between gap-2 shadow-xs">
               <div className="text-left min-w-0">
                 <span className="text-[10px] font-mono text-[#6c6f85] dark:text-[#a6adc8] uppercase block">
-                  SECONDARY EMAIL
+                  SECONDARY EMAIL (GMAIL)
                 </span>
                 <span className="font-mono text-xs sm:text-sm font-bold text-[#4c4f69] dark:text-[#cdd6f4] select-all truncate block">
                   {profileData.links.secondaryEmail}
                 </span>
               </div>
               <button
-                onClick={() => handleCopyEmail(profileData.links.secondaryEmail, true)}
+                onClick={() => handleCopy(profileData.links.secondaryEmail, 'secondary-gmail')}
                 onMouseEnter={() => soundManager.playHover()}
                 className="shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-black/5 dark:bg-white/5 text-[#6c6f85] dark:text-[#a6adc8] hover:bg-black/10 dark:hover:bg-white/10 transition-all cursor-pointer flex items-center gap-1.5"
                 title="Copy secondary email"
               >
-                {copiedSecondary ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
-                <span>{copiedSecondary ? 'copied!' : 'copy'}</span>
+                {copiedKey === 'secondary-gmail' ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
+                <span>{copiedKey === 'secondary-gmail' ? 'copied!' : 'copy'}</span>
+              </button>
+            </div>
+
+            {/* Secondary Email (Proton) */}
+            <div className="p-3 sm:p-3.5 rounded-xl border-2 border-[#ccd0da] dark:border-[#313244] bg-white/70 dark:bg-[#181825]/70 flex items-center justify-between gap-2 shadow-xs">
+              <div className="text-left min-w-0">
+                <span className="text-[10px] font-mono text-[#6c6f85] dark:text-[#a6adc8] uppercase block">
+                  SECONDARY EMAIL (PROTON)
+                </span>
+                <span className="font-mono text-xs sm:text-sm font-bold text-[#4c4f69] dark:text-[#cdd6f4] select-all truncate block">
+                  {profileData.links.alternateEmail}
+                </span>
+              </div>
+              <button
+                onClick={() => handleCopy(profileData.links.alternateEmail || '', 'secondary-proton')}
+                onMouseEnter={() => soundManager.playHover()}
+                className="shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-black/5 dark:bg-white/5 text-[#6c6f85] dark:text-[#a6adc8] hover:bg-black/10 dark:hover:bg-white/10 transition-all cursor-pointer flex items-center gap-1.5"
+                title="Copy alternate email"
+              >
+                {copiedKey === 'secondary-proton' ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
+                <span>{copiedKey === 'secondary-proton' ? 'copied!' : 'copy'}</span>
               </button>
             </div>
 
             {/* Contact Number */}
-            <div className="sm:col-span-2 p-3 sm:p-3.5 rounded-xl border-2 border-[#ccd0da] dark:border-[#313244] bg-white/70 dark:bg-[#181825]/70 flex items-center justify-between gap-2 shadow-xs">
+            <div className="p-3 sm:p-3.5 rounded-xl border-2 border-[#ccd0da] dark:border-[#313244] bg-white/70 dark:bg-[#181825]/70 flex items-center justify-between gap-2 shadow-xs">
               <div className="text-left min-w-0">
                 <span className="text-[10px] font-mono text-[#6c6f85] dark:text-[#a6adc8] uppercase block">
                   CONTACT NUMBER
@@ -191,13 +191,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ isDark: _isDark 
                 </span>
               </div>
               <button
-                onClick={() => handleCopyPhone(profileData.links.phone)}
+                onClick={() => handleCopy(profileData.links.phone, 'phone', false)}
                 onMouseEnter={() => soundManager.playHover()}
                 className="shrink-0 px-2.5 sm:px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-[#40a02b]/15 text-[#40a02b] dark:text-[#a6e3a1] hover:bg-[#40a02b] hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
                 title="Copy contact number"
               >
-                {copiedPhone ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
-                <span>{copiedPhone ? 'copied!' : 'copy'}</span>
+                {copiedKey === 'phone' ? <Check size={14} className="text-green-600 dark:text-green-400" /> : <Copy size={13} />}
+                <span>{copiedKey === 'phone' ? 'copied!' : 'copy'}</span>
               </button>
             </div>
         </div>
