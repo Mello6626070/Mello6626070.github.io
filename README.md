@@ -1,81 +1,61 @@
-# Catppuccin Illustrated CS Portfolio
+# Mello's Orbital Deck // Retro Space Station & CS Portfolio
 
-An interactive, hand-drawn sketchbook developer portfolio built with **React 19**, **TypeScript**, **Vite**, and **Tailwind CSS**.
-
-Styled with the cozy, soothing **Catppuccin Palette** (Mocha Base `#1e1e2e`, Mauve `#cba6f7`, Lavender `#b4befe`, Peach `#fab387`, Mint `#a6e3a1`, and Sky `#89dceb`), combined with an artistic, illustrated drawing design inspired by whimsical floating clouds, concentric glowing moon rings, and hand-drawn doodle notes.
-
-Crafted for an aspiring Computer Science student seeking internship / OJT opportunities across:
-- **Game Development** (Godot Engine 4 & Blender 3D)
-- **Cybersecurity** (Network Packet Telemetry & Auditing)
-- **Data Science & Analytics** (Exploratory Data Analysis & Machine Learning)
-- **Software Engineering** (Full-Stack TypeScript & React)
+An interactive, cosmic retro-desktop & indie web developer portfolio built with **React 19**, **TypeScript**, **Vite**, and **Tailwind CSS**.
 
 ---
 
-## Features
+## Cosmic Features & System Highlights
 
-- **Illustrated Nightscape Hero**:
-  - Soft concentric radiant moon rings and stylized floating clouds drifting across the night sky.
-  - Hand-drawn doodle sparkles and stars (`✦`, `★`, `✨`).
-  - Vertical `SCROLLDOWN` prompt and stacked `P O R / T F O / L I O` typography.
-  - Interactive discipline shortcut cards.
-- **Sketchbook Project Gallery**:
-  - Illustrated project cards styled like sketchbook plates with organic borders and shadows.
-  - Discipline filter pills (`All Works`, `Game Dev`, `Cybersecurity`, `Data Science`, `Software Eng`).
-  - Detailed project inspect dialog with goals, architecture, highlights checklist, and live demo / GitHub links.
-- **Skill & Knowledge Board**:
-  - Illustrated sticker cards with confidence progress meters and practical context notes.
-- **Learning Journey Roadmap**:
-  - Step-by-step milestones tracing academic coursework, Godot game lab, security labs, and OJT readiness.
-- **Interactive Lo-Fi Audio Player**:
-  - Circular Play/Pause & Mute buttons with a live scrubber timeline.
-  - Plays in-browser synthesized ambient lo-fi chord progressions via Web Audio API (zero external assets, zero latency).
-- **Postcard Contact Section**:
-  - 1-click email copy with pastel confetti animation.
-  - Direct mail action and external links (GitHub, LinkedIn, itch.io, ArtStation).
-- **Automated GitHub Pages Deployment**:
-  - Configured with `.github/workflows/deploy.yml` for automated static deployments on push to `main`.
+1. **Retro Space Station Command Deck (`HomeWindow`)**:
+   - Terminal frame (`orbit://station-deck`) with real-time status telemetry (`SYS: NOMINAL`).
+   - Custom scalable vector navigation icons:
+     - **`about`**: Astronaut Helmet & Flight Log
+     - **`work`**: Orbital Space Station & Mission Vault
+     - **`contact`**: Subspace Comms Dish & Deep Space Relay
+   - Interactive **Orbi the Ringed Planet** mascot (replacing the old star) with orbital wobble, stardust confetti explosions, and cosmic celestial chimes!
+
+2. **Roci the UFO Companion (`RociUfoMascot`)**:
+   - Animated retro-futuristic flying saucer floating in the lower orbital dock (`animate-ufo`).
+   - Glowing tractor beam cone (`animate-beam`), metallic hull trim, and blinking navigation LED lights.
+   - Click to hail Roci and trigger cute synthesized UFO chirps (`playRociChirp`) and space transmissions regarding Godot game dev, Wireshark telemetry, and hydration in zero gravity!
+
+3. **Planetary Horizon & Starchart Grid (`CosmicHorizon`)**:
+   - Atmospheric celestial horizon line with soft glowing aurora rim replacing the old pond wave.
+   - Distant ringed planet, twinkling cosmic particle stars, and coordinate latitude/longitude telemetry markers.
+   - Smooth transition between **Retro Starchart Paper** (Light Mode) and **Deep Orbit / Nebula Deck** (Dark Mode).
+
+4. **Orbital Beacon Radio (`MediaScrubberBar`)**:
+   - Real-time synthesized ambient lo-fi synthesizer using zero external audio files via the native **Web Audio API**.
+   - Frequency tuner (`1420.4 MHz // Hydrogen Line`), interactive track scrubber, and space mission track presets (Voyager 1, Cassini, Apollo, Pulsar).
+
+5. **Mission Vault & Flight Blueprints (`WorkView` & `ProjectModal`)**:
+   - Filterable mission dossiers: Godot 4 action platformers, Wireshark packet telemetry analyzers, Blender 3D modular habitat kits, cryptographic vaults, and data science pipelines.
+   - Deep-dive blueprint inspection modals (`roci-os://missions/...`).
+
+6. **Deep Space Relay & 88×31 Badges Deck (`ContactSection` & `RetroBadges`)**:
+   - 1-click email dispatch frequency copy with stardust particle burst.
+   - Authentic 88×31 retro pixel badges (`GODOT 4 ZERO-G`, `ROCI UFO FLIGHT READY`, `WIRESHARK PACKET RADAR`, `BLENDER 3D HABITATS`, `REACT 19 ORBITAL TS`).
+
+---
+
+## Tech Stack
+
+- **Frontend**: React 19, TypeScript, Tailwind CSS, Vite
+- **Audio Synthesis**: Native Web Audio API (zero-latency, zero-asset synthesized chords & sound effects)
+- **Icons & Visuals**: Custom scalable SVGs + Lucide React
+- **Confetti**: canvas-confetti
 
 ---
 
 ## Getting Started
 
-### 1. Install Dependencies
 ```bash
+# Install dependencies
 npm install
-```
 
-### 2. Run Local Development Server
-```bash
+# Start local development server
 npm run dev
-```
-Open `http://localhost:5173` in your browser.
 
-### 3. Build for Production
-```bash
+# Build production bundle
 npm run build
 ```
-
----
-
-## Customizing Your Information
-
-All personal content is stored in clean TypeScript files under `src/data/`:
-- [`src/data/profile.ts`](src/data/profile.ts): Bio, university, email, social links, resume URL.
-- [`src/data/projects.ts`](src/data/projects.ts): Your Godot games, Blender assets, security tools, and data projects.
-- [`src/data/skills.ts`](src/data/skills.ts): Your tools, confidence percentages, and practical notes.
-- [`src/data/roadmap.ts`](src/data/roadmap.ts): Your academic phases and internship deliverables.
-
----
-
-## Deploying to GitHub Pages
-
-1. Push your repository to GitHub:
-   ```bash
-   git remote add origin https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>.git
-   git push -u origin main
-   ```
-2. In your repository on GitHub:
-   - Go to **Settings** → **Pages**
-   - Under **Build and deployment** → **Source**, select **GitHub Actions**
-3. GitHub Actions will automatically compile and deploy your portfolio to `https://<YOUR_USERNAME>.github.io/<YOUR_REPOSITORY>/`!

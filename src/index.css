@@ -1,91 +1,538 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
+  :root {
+    /* Catppuccin Latte (Light Theme) */
+    --ctp-base: #eff1f5;
+    --ctp-mantle: #e6e9ef;
+    --ctp-crust: #dce0e8;
+    --ctp-surface0: #ccd0da;
+    --ctp-surface1: #bcc0cc;
+    --ctp-surface2: #acb0be;
+    --ctp-overlay0: #9ca0b0;
+    --ctp-overlay1: #8c8fa1;
+    --ctp-overlay2: #7c7f93;
+    --ctp-subtext0: #6c6f85;
+    --ctp-subtext1: #5c5f77;
+    --ctp-text: #4c4f69;
+    --ctp-lavender: #7287fd;
+    --ctp-blue: #1e66f5;
+    --ctp-sapphire: #209fb5;
+    --ctp-sky: #04a5e5;
+    --ctp-teal: #179299;
+    --ctp-green: #40a02b;
+    --ctp-yellow: #df8e1d;
+    --ctp-peach: #fe640b;
+    --ctp-maroon: #e64553;
+    --ctp-red: #d20f39;
+    --ctp-mauve: #8839ef;
+    --ctp-pink: #ea76cb;
+    --ctp-flamingo: #dd7878;
+    --ctp-rosewater: #dc8a78;
+    --ctp-pond: #72a7ea;
+  }
+
+  .dark {
+    /* Catppuccin Mocha (Dark Theme) */
+    --ctp-base: #1e1e2e;
+    --ctp-mantle: #181825;
+    --ctp-crust: #11111b;
+    --ctp-surface0: #313244;
+    --ctp-surface1: #45475a;
+    --ctp-surface2: #585b70;
+    --ctp-overlay0: #6c7086;
+    --ctp-overlay1: #7f849c;
+    --ctp-overlay2: #9399b2;
+    --ctp-subtext0: #a6adc8;
+    --ctp-subtext1: #bac2de;
+    --ctp-text: #cdd6f4;
+    --ctp-lavender: #b4befe;
+    --ctp-blue: #89b4fa;
+    --ctp-sapphire: #74c7ec;
+    --ctp-sky: #89dceb;
+    --ctp-teal: #94e2d5;
+    --ctp-green: #a6e3a1;
+    --ctp-yellow: #f9e2af;
+    --ctp-peach: #fab387;
+    --ctp-maroon: #eba0ac;
+    --ctp-red: #f38ba8;
+    --ctp-mauve: #cba6f7;
+    --ctp-pink: #f5c2e7;
+    --ctp-flamingo: #f2cdcd;
+    --ctp-rosewater: #f5e0dc;
+    --ctp-pond: #172336;
+  }
+
   body {
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-    background-color: #1e1e2e;
-    color: #cdd6f4;
+    font-family: 'Outfit', 'Playpen Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--ctp-base);
+    color: var(--ctp-text);
   }
 }
 
 .font-hand {
-  font-family: 'Caveat', cursive;
+  font-family: 'Playpen Sans', 'Caveat', cursive, sans-serif;
 }
 
 .font-display {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Playpen Sans', sans-serif;
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Subtle sketchbook paper stipple / grain pattern */
-.bg-sketch-paper {
-  background-color: #1e1e2e;
-  background-image: radial-gradient(rgba(205, 214, 244, 0.05) 1px, transparent 0);
-  background-size: 16px 16px;
+/* =========================================================================
+   Space Cartography & Cosmic Starchart Grid Background
+   ========================================================================= */
+.bg-indie-grid,
+.bg-space-grid {
+  background-color: var(--ctp-base);
+  background-image: 
+    radial-gradient(circle at 16px 16px, rgba(76, 79, 105, 0.12) 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(76, 79, 105, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(76, 79, 105, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* Doodle / hand-drawn card borders with slight organic feel */
+.dark .bg-indie-grid,
+.dark .bg-space-grid {
+  background-color: var(--ctp-base);
+  background-image: 
+    radial-gradient(circle at 16px 16px, rgba(203, 166, 247, 0.15) 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(203, 166, 247, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 166, 247, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* =========================================================================
+   Catppuccin Desktop Card Borders & Shadows
+   ========================================================================= */
 .sketch-card {
-  border: 2px solid #313244;
-  border-radius: 1.5rem;
-  background-color: #181825;
-  box-shadow: 4px 4px 0px #11111b;
+  border: 2px solid var(--ctp-surface0);
+  border-radius: 1.25rem;
+  background-color: var(--ctp-mantle);
+  box-shadow: 4px 4px 0px rgba(76, 79, 105, 0.15);
   transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark .sketch-card {
+  border-color: #2a2f4c;
+  background-color: #131625;
+  box-shadow: 4px 4px 0px #07080f;
 }
 
 .sketch-card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #11111b;
-  border-color: #cba6f7;
+  box-shadow: 6px 6px 0px rgba(76, 79, 105, 0.22);
 }
 
-/* Cute sticker badge style */
-.sketch-sticker {
-  border: 2px solid #45475a;
-  border-radius: 9999px;
-  box-shadow: 2px 2px 0px #11111b;
+.dark .sketch-card:hover {
+  box-shadow: 6px 6px 0px #07080f;
+  border-color: var(--ctp-mauve);
 }
 
-/* Hand-drawn tape / washi tape accent */
+/* Retro flat drop shadows */
+.drop-shadow-flat {
+  filter: drop-shadow(2px 2px 0px rgba(76, 79, 105, 0.25));
+}
+
+.dark .drop-shadow-flat {
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.8));
+}
+
+.drop-shadow-tag {
+  box-shadow: 2px 2px 0px rgba(76, 79, 105, 0.15);
+}
+
+.dark .drop-shadow-tag {
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
+}
+
+/* Retro Window Modal */
+.retro-window {
+  border: 2px solid var(--ctp-text);
+  border-radius: 0.75rem;
+  box-shadow: 6px 6px 0px rgba(76, 79, 105, 0.25);
+}
+
+.dark .retro-window {
+  border: 2px solid #3d4468;
+  box-shadow: 6px 6px 0px #07080f;
+}
+
+/* Washi tape strip */
 .washi-tape {
-  background-color: rgba(203, 166, 247, 0.25);
+  background-color: rgba(114, 135, 253, 0.18);
+  border-left: 2px dashed rgba(114, 135, 253, 0.45);
+  border-right: 2px dashed rgba(114, 135, 253, 0.45);
+}
+
+.dark .washi-tape {
+  background-color: rgba(203, 166, 247, 0.15);
   border-left: 2px dashed rgba(203, 166, 247, 0.4);
   border-right: 2px dashed rgba(203, 166, 247, 0.4);
 }
 
-/* Cloud float animation */
+/* =========================================================================
+   Animations: UFO Hover, Tractor Beam, Stars, & Orbital Motion
+   ========================================================================= */
+@keyframes ufo-hover {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(3deg);
+  }
+}
+
+.animate-ufo {
+  animation: ufo-hover 3.2s ease-in-out infinite;
+}
+
+.animate-bobbing {
+  animation: ufo-hover 3s ease-in-out infinite;
+}
+
+@keyframes beam-pulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scaleX(0.92);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scaleX(1.06);
+  }
+}
+
+.animate-beam {
+  animation: beam-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-twinkle {
+  animation: star-twinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes orbit-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(6deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit-float 4.5s ease-in-out infinite;
+}
+
 @keyframes gentle-float {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
 
 .animate-float-slow {
-  animation: gentle-float 6s ease-in-out infinite;
+  animation: gentle-float 5s ease-in-out infinite;
 }
 
 .animate-float-delayed {
-  animation: gentle-float 7s ease-in-out infinite 1.5s;
+  animation: gentle-float 6s ease-in-out infinite 1.2s;
 }
 
-/* Catppuccin Custom Scrollbar */
+/* =========================================================================
+   Day Sky & Night Sky Animations: Sun, Clouds, & Shooting Stars
+   ========================================================================= */
+/* Flat Sun Animation: gentle float without blurry gradient glow */
+@keyframes sun-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(4deg);
+  }
+}
+
+.animate-sun {
+  animation: sun-float 6s ease-in-out infinite;
+}
+
+/* =========================================================================
+   Celestial Body (Sun / Moon) Sunset & Sunrise Orchestration
+   Sequence: The active body sets immediately (0ms), sinking toward the horizon.
+   Then the incoming body rises from below the horizon after a delay (450ms).
+   ========================================================================= */
+.celestial-sun-risen {
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 1050ms cubic-bezier(0.16, 1, 0.3, 1) 450ms,
+              opacity 850ms ease-out 450ms;
+}
+
+.celestial-sun-set {
+  transform: translate3d(50px, 70vh, 0) scale(0.75) rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              opacity 650ms ease-in 100ms;
+}
+
+.celestial-moon-risen {
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 1050ms cubic-bezier(0.16, 1, 0.3, 1) 450ms,
+              opacity 850ms ease-out 450ms;
+}
+
+.celestial-moon-set {
+  transform: translate3d(50px, 70vh, 0) scale(0.75) rotate(-30deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              opacity 650ms ease-in 100ms;
+}
+
+@keyframes cloud-drift-1 {
+  0% {
+    transform: translateX(-15%);
+  }
+  50% {
+    transform: translateX(15%);
+  }
+  100% {
+    transform: translateX(-15%);
+  }
+}
+
+.animate-cloud-1 {
+  animation: cloud-drift-1 26s ease-in-out infinite;
+}
+
+@keyframes cloud-drift-2 {
+  0% {
+    transform: translateX(12%);
+  }
+  50% {
+    transform: translateX(-12%);
+  }
+  100% {
+    transform: translateX(12%);
+  }
+}
+
+.animate-cloud-2 {
+  animation: cloud-drift-2 34s ease-in-out infinite;
+}
+
+@keyframes cloud-drift-3 {
+  0% {
+    transform: translateX(-8%);
+  }
+  50% {
+    transform: translateX(8%);
+  }
+  100% {
+    transform: translateX(-8%);
+  }
+}
+
+.animate-cloud-3 {
+  animation: cloud-drift-3 20s ease-in-out infinite;
+}
+
+/* =========================================================================
+   Light Mode Flying & Soaring Birds Animations
+   ========================================================================= */
+@keyframes bird-flap-fast {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.4) translateY(1.5px);
+  }
+}
+
+@keyframes bird-flap-slow {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.5) translateY(1px);
+  }
+}
+
+.animate-bird-flap-fast {
+  animation: bird-flap-fast 0.45s ease-in-out infinite;
+}
+
+.animate-bird-flap-medium {
+  animation: bird-flap-fast 0.6s ease-in-out infinite;
+}
+
+.animate-bird-flap-slow {
+  animation: bird-flap-slow 0.9s ease-in-out infinite;
+}
+
+/* Flock 1 traversal across screen from left to right */
+@keyframes bird-flock-traverse-1 {
+  0% {
+    transform: translate3d(-10vw, 16vh, 0);
+  }
+  100% {
+    transform: translate3d(112vw, 6vh, 0);
+  }
+}
+
+.animate-bird-flock-1 {
+  animation: bird-flock-traverse-1 28s linear infinite;
+}
+
+/* Flock 2 traversal across screen with staggered entry */
+@keyframes bird-flock-traverse-2 {
+  0% {
+    transform: translate3d(-12vw, 34vh, 0);
+  }
+  100% {
+    transform: translate3d(112vw, 24vh, 0);
+  }
+}
+
+.animate-bird-flock-2 {
+  animation: bird-flock-traverse-2 36s linear infinite 14s;
+}
+
+/* Gentle soaring bird ambient loop */
+@keyframes bird-soar-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+  25% {
+    transform: translate3d(24px, -14px, 0) rotate(4deg);
+  }
+  50% {
+    transform: translate3d(50px, -4px, 0) rotate(-2deg);
+  }
+  75% {
+    transform: translate3d(28px, 12px, 0) rotate(-3deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+}
+
+.animate-bird-soar-1 {
+  animation: bird-soar-drift 18s ease-in-out infinite;
+}
+
+.animate-bird-soar-2 {
+  animation: bird-soar-drift 22s ease-in-out infinite 6s;
+}
+
+/* =========================================================================
+   Shooting Stars: completely hidden (opacity 0) before and after animation
+   ========================================================================= */
+@keyframes shoot-star {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-38deg) scaleX(0.1);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+    transform: translate3d(-35px, 28px, 0) rotate(-38deg) scaleX(1);
+  }
+  10% {
+    transform: translate3d(-420px, 330px, 0) rotate(-38deg) scaleX(1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(-420px, 330px, 0) rotate(-38deg) scaleX(0);
+    opacity: 0;
+  }
+}
+
+.animate-meteor-1 {
+  opacity: 0;
+  animation: shoot-star 4.8s ease-out infinite 0.2s;
+  animation-fill-mode: both;
+}
+
+.animate-meteor-2 {
+  opacity: 0;
+  animation: shoot-star 6.2s ease-out infinite 1.4s;
+  animation-fill-mode: both;
+}
+
+.animate-meteor-3 {
+  opacity: 0;
+  animation: shoot-star 7.8s ease-out infinite 2.8s;
+  animation-fill-mode: both;
+}
+
+.animate-meteor-4 {
+  opacity: 0;
+  animation: shoot-star 6.8s ease-out infinite 4.2s;
+  animation-fill-mode: both;
+}
+
+.animate-meteor-5 {
+  opacity: 0;
+  animation: shoot-star 8.5s ease-out infinite 2.1s;
+  animation-fill-mode: both;
+}
+
+.animate-meteor-6 {
+  opacity: 0;
+  animation: shoot-star 9.2s ease-out infinite 5.6s;
+  animation-fill-mode: both;
+}
+
+/* =========================================================================
+   Custom Scrollbars (Latte & Mocha)
+   ========================================================================= */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #181825;
+  background: var(--ctp-mantle);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #45475a;
+  background: var(--ctp-surface2);
   border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #cba6f7;
+  background: var(--ctp-overlay1);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--ctp-surface1);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--ctp-mauve);
 }

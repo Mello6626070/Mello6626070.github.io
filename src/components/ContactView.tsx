@@ -41,10 +41,10 @@ export const ContactView: React.FC = () => {
           <div>
             <div className="text-xs font-mono text-[#01ef01] uppercase tracking-widest mb-1 flex items-center gap-1.5 font-bold">
               <Mail size={14} />
-              <span>DIRECT COMMS // INTERNSHIP / OJT INQUIRIES</span>
+              <span>DIRECT COMMS // HELLO & CONNECT</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-display font-black text-white uppercase tracking-tight">
-              CONNECT & COLLABORATE
+              CONNECT & CHAT
             </h2>
           </div>
           <div className="font-mono text-xs text-slate-400 bg-[#121217] px-3 py-1.5 border border-[#23232c]">
@@ -60,13 +60,13 @@ export const ContactView: React.FC = () => {
             <div className="border-2 border-[#2c2c36] bg-[#101015] p-6 clip-p3r-card shadow-[0_4px_25px_rgba(0,0,0,0.8)]">
               
               <div className="text-xs font-mono text-[#01ef01] uppercase tracking-widest mb-2 font-bold">
-                // OJT / INTERNSHIP PLACEMENT
+                // SAY HELLO & GET IN TOUCH
               </div>
               <h3 className="text-2xl font-display font-black text-white uppercase mb-3">
-                Let's Build Something Great Together
+                Let's Connect & Talk Tech
               </h3>
               <p className="text-slate-300 font-sans text-sm leading-relaxed mb-6">
-                I am actively seeking an internship / OJT opportunity where I can apply my skills in Game Development (Godot & Blender), Cybersecurity, Data Science, or Software Engineering. Feel free to reach out directly via email or inspect my code repositories below.
+                Feel free to reach out directly via email to chat about games, 3D art, anime, Linux, or tech! I'm always happy to connect and exchange ideas.
               </p>
 
               {/* Email Copy Card */}
@@ -93,10 +93,10 @@ export const ContactView: React.FC = () => {
                 </button>
               </div>
 
-              {/* Resume download / view */}
+              {/* Action buttons */}
               <div className="flex flex-wrap gap-3">
                 <a
-                  href={`mailto:${profileData.links.email}?subject=Internship%20%2F%20OJT%20Inquiry`}
+                  href={`mailto:${profileData.links.email}`}
                   onClick={() => soundManager.playConfirm()}
                   className="px-6 py-3 font-display font-black text-xs tracking-widest bg-[#01ef01] hover:bg-white text-black transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(1,239,1,0.3)]"
                 >

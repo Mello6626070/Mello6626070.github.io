@@ -41,29 +41,29 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
     : projectsData.filter((p) => p.discipline === activeFilter);
 
   return (
-    <section className="py-16 md:py-24 bg-[#1e1e2e] bg-sketch-paper relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 px-4 sm:px-8 border-b-2 border-dashed border-[#9e8492]/30 dark:border-[#5a4568]/40 relative">
+      <div className="max-w-[980px] mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b-2 border-[#313244] mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-dashed border-[#9e8492]/30 dark:border-[#5a4568]/40 mb-8">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#cba6f7] uppercase tracking-wider mb-2 font-bold">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#8b5aed] dark:text-[#cba6f7] uppercase tracking-wider mb-2 font-bold">
               <Layers size={14} />
               <span>SKETCHBOOK GALLERY // RECENT PROJECTS</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-display font-black text-[#30232a] dark:text-white tracking-tight">
               Featured Work & Prototypes
             </h2>
           </div>
 
-          <div className="font-hand text-xl text-[#f9e2af] flex items-center gap-1.5 self-start md:self-end">
+          <div className="font-hand text-base sm:text-lg text-[#b45309] dark:text-[#f9e2af] flex items-center gap-1.5 self-start sm:self-end font-bold">
             <Sparkles size={16} />
-            <span>Click any project card to inspect deep-dive sketches</span>
+            <span>Click any card to inspect sketch blueprints</span>
           </div>
         </div>
 
-        {/* Filter Pills with Catppuccin Rounded Style */}
-        <div className="flex flex-wrap gap-2.5 mb-10">
+        {/* Filter Pills with Marighoul / Sharyap Rounded Style */}
+        <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-8">
           {filters.map((f) => {
             const isActive = activeFilter === f.id;
             return (
@@ -71,15 +71,17 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                 key={f.id}
                 onClick={() => handleFilterClick(f.id)}
                 onMouseEnter={() => soundManager.playHover()}
-                className={`px-5 py-2.5 rounded-full font-display font-semibold text-xs tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                className={`px-4 py-2 rounded-full font-mono font-bold text-xs tracking-wide transition-all duration-150 cursor-pointer flex items-center gap-2 ${
                   isActive
-                    ? 'bg-[#cba6f7] text-[#11111b] shadow-[3px_3px_0px_#11111b] border-2 border-[#11111b] font-extrabold -translate-y-0.5'
-                    : 'bg-[#181825] text-[#a6adc8] hover:text-white hover:bg-[#313244] border-2 border-[#313244] shadow-[2px_2px_0px_#11111b]'
+                    ? 'bg-[#30232a] text-[#f7f4ee] dark:bg-[#cba6f7] dark:text-[#11111b] shadow-[3px_3px_0px_#11111b] border-2 border-[#11111b] -translate-y-0.5'
+                    : 'bg-white dark:bg-[#201a2b] text-[#5a4855] dark:text-[#a6adc8] hover:text-[#30232a] dark:hover:text-white border-2 border-[#e5dfd8] dark:border-[#4a3a55] shadow-[2px_2px_0px_rgba(48,35,42,0.1)]'
                 }`}
               >
                 <span>{f.label}</span>
-                <span className={`text-[10px] px-2 py-0.5 rounded-full ${
-                  isActive ? 'bg-[#11111b]/20 text-[#11111b]' : 'bg-[#313244] text-[#bac2de]'
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                  isActive
+                    ? 'bg-white/20 dark:bg-[#11111b]/20 text-white dark:text-[#11111b]'
+                    : 'bg-[#f5f1eb] dark:bg-[#322740] text-[#7e6977] dark:text-[#bac2de]'
                 }`}>
                   {f.count}
                 </span>
@@ -89,7 +91,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
         </div>
 
         {/* Responsive Grid of Illustrated Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}

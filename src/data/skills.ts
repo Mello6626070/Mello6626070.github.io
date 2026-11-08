@@ -67,7 +67,7 @@ export const skillsData: SkillItem[] = [
     color: "#94e2d5", // Teal
     bgPill: "bg-[#94e2d5]/15 text-[#94e2d5] border-[#94e2d5]/30",
     tools: ["Ubuntu/Debian", "Bash Scripting", "Permissions", "SSH"],
-    note: "Daily Linux user, comfortable with shell pipelines, cron, and system admin.",
+    note: "Comfortable with Linux shell pipelines, cron, and system admin.",
   },
   {
     id: "crypto-security",

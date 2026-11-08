@@ -1,25 +1,36 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Menu, X, Sparkles, Send } from 'lucide-react';
+import { Volume2, VolumeX, Menu, X, Sun, Moon, Sparkles } from 'lucide-react';
 import { soundManager } from '../utils/soundEffects';
-import { GithubIcon, LinkedinIcon } from './Icons';
 import { profileData } from '../data/profile';
 
-export type NavSection = 'projects' | 'skills' | 'journey' | 'contact';
+export type NavSection = 'about' | 'projects' | 'skills' | 'journey' | 'badges' | 'contact';
 
 interface NavbarProps {
   activeSection: NavSection;
   onNavigate: (section: NavSection) => void;
+  isDark: boolean;
+  onToggleDark: () => void;
+  isMuted: boolean;
+  onToggleMute: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
-  const [isMuted, setIsMuted] = useState(soundManager.getMuted());
+export const Navbar: React.FC<NavbarProps> = ({
+  activeSection,
+  onNavigate,
+  isDark,
+  onToggleDark,
+  isMuted,
+  onToggleMute,
+}) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const navItems: { id: NavSection; label: string }[] = [
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'journey', label: 'Journey' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'about', label: 'ABOUT' },
+    { id: 'projects', label: 'PROJECTS' },
+    { id: 'skills', label: 'SKILLS' },
+    { id: 'journey', label: 'JOURNEY' },
+    { id: 'badges', label: 'BADGES' },
+    { id: 'contact', label: 'CONTACT' },
   ];
 
   const handleNavClick = (section: NavSection) => {
@@ -28,39 +39,37 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
     setIsMobileOpen(false);
   };
 
-  const handleMuteToggle = () => {
-    const muted = soundManager.toggleMute();
-    setIsMuted(muted);
-  };
-
   return (
-    <header className="sticky top-0 z-40 bg-[#181825]/90 backdrop-blur-md border-b-2 border-[#313244]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <header className="sticky top-0 z-40 bg-[#2d222b] dark:bg-[#16111d] text-white border-b-2 border-[#1f161e] dark:border-[#382b45] shadow-md select-none transition-colors duration-200">
+      <div className="max-w-[1040px] mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 sm:h-[72px]">
           
-          {/* Left: Brand Monogram / Name */}
+          {/* Left Brand: Marighoul / Sharyap Logo */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleNavClick('projects')}
+              onClick={() => handleNavClick('about')}
+              onMouseEnter={() => soundManager.playHover()}
               className="flex items-center gap-2.5 text-left group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#cba6f7] to-[#f5c2e7] flex items-center justify-center text-[#11111b] font-display font-extrabold text-lg shadow-[2px_2px_0px_#11111b] border-2 border-[#45475a] group-hover:rotate-6 transition-transform">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-[#8b5aed] to-[#f472b6] flex items-center justify-center text-white font-mono font-black text-base shadow-[2px_2px_0px_#11111b] border-2 border-white/20 group-hover:rotate-6 transition-transform">
                 M
               </div>
-              <div>
-                <div className="font-display font-bold text-white text-base tracking-wide flex items-center gap-1.5">
-                  <span>{profileData.name}</span>
-                  <span className="font-hand text-sm text-[#cba6f7]">~ student</span>
-                </div>
-                <div className="text-xs text-[#a6adc8] font-mono">
+              <div className="flex flex-col">
+                <span className="font-display font-black text-white text-base sm:text-lg tracking-wide group-hover:text-[#d8b4e2] transition-colors">
+                  {profileData.name}
+                  <span className="font-hand text-xs text-[#d8b4e2] dark:text-[#cba6f7] ml-1.5 font-normal">
+                    .desktop
+                  </span>
+                </span>
+                <span className="text-[10px] text-[#a999a2] font-mono leading-none">
                   {profileData.status}
-                </div>
+                </span>
               </div>
             </button>
           </div>
 
-          {/* Center: Clean Rounded Navigation Pills */}
-          <nav className="hidden md:flex items-center gap-1.5 bg-[#1e1e2e] p-1.5 rounded-full border-2 border-[#313244] shadow-inner">
+          {/* Desktop Navigation Links (Marighoul Bold Uppercase Style) */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 font-mono text-sm font-bold tracking-wider">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -68,109 +77,90 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   onMouseEnter={() => soundManager.playHover()}
-                  className={`px-5 py-2 rounded-full font-display font-semibold text-sm transition-all duration-200 cursor-pointer ${
+                  className={`transition-colors duration-150 py-1 cursor-pointer relative ${
                     isActive
-                      ? 'bg-[#cba6f7] text-[#11111b] shadow-[2px_2px_0px_#11111b] font-bold'
-                      : 'text-[#cdd6f4] hover:text-white hover:bg-[#313244]/60'
+                      ? 'text-[#f5c2e7] dark:text-[#cba6f7]'
+                      : 'text-white hover:text-[#d8b4e2]'
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#f5c2e7] dark:bg-[#cba6f7] rounded-full animate-in fade-in" />
+                  )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Right: Social Icons + Hire Me / OJT Button + Sound FX Toggle */}
-          <div className="hidden sm:flex items-center gap-3">
-            <a
-              href={profileData.links.github}
-              target="_blank"
-              rel="noreferrer"
-              onMouseEnter={() => soundManager.playHover()}
-              className="p-2.5 rounded-xl bg-[#1e1e2e] border-2 border-[#313244] text-[#cdd6f4] hover:text-[#cba6f7] hover:border-[#cba6f7] transition-colors"
-              title="GitHub Profile"
-            >
-              <GithubIcon size={16} />
-            </a>
+          {/* Right Controls: SFX, Dark Mode, Mobile Toggle */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
 
-            <a
-              href={profileData.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              onMouseEnter={() => soundManager.playHover()}
-              className="p-2.5 rounded-xl bg-[#1e1e2e] border-2 border-[#313244] text-[#cdd6f4] hover:text-[#89b4fa] hover:border-[#89b4fa] transition-colors"
-              title="LinkedIn Profile"
-            >
-              <LinkedinIcon size={16} />
-            </a>
-
-            {/* Audio Toggle */}
+            {/* SFX Toggle (Sharyap signature) */}
             <button
-              onClick={handleMuteToggle}
-              title={isMuted ? 'Unmute Sound FX' : 'Mute Sound FX'}
-              className="p-2.5 rounded-xl bg-[#1e1e2e] border-2 border-[#313244] text-[#cdd6f4] hover:text-[#a6e3a1] hover:border-[#a6e3a1] transition-colors cursor-pointer"
+              onClick={() => {
+                soundManager.playPop();
+                onToggleMute();
+              }}
+              onMouseEnter={() => soundManager.playHover()}
+              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-[#e8def8] hover:text-white transition-all cursor-pointer hover:scale-105 active:scale-90"
+              title={isMuted ? 'Turn SFX ON' : 'Turn SFX OFF (Muted)'}
             >
-              {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} className="text-[#a6e3a1]" />}
+              {isMuted ? <VolumeX size={17} /> : <Volume2 size={17} />}
             </button>
 
-            {/* Hire Me / OJT Button (from Image 2 inspiration!) */}
+            {/* Dark / Light Mode Toggle (Sharyap signature) */}
             <button
-              onClick={() => handleNavClick('contact')}
+              onClick={() => {
+                soundManager.playThemeSwitch();
+                onToggleDark();
+              }}
               onMouseEnter={() => soundManager.playHover()}
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#fab387] to-[#f9e2af] text-[#11111b] font-display font-extrabold text-sm tracking-wide shadow-[3px_3px_0px_#11111b] border-2 border-[#11111b] hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-1.5 cursor-pointer"
+              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-[#e8def8] hover:text-white transition-all cursor-pointer hover:scale-105 active:scale-90"
+              title={isDark ? 'Switch to Light Mode (Graph Paper)' : 'Switch to Dark Mode (Midnight Desktop)'}
             >
-              <span>Hire Me</span>
-              <Sparkles size={14} className="text-[#11111b]" />
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex sm:hidden items-center gap-2">
-            <button
-              onClick={handleMuteToggle}
-              className="p-2 rounded-xl bg-[#1e1e2e] border-2 border-[#313244] text-[#cdd6f4]"
-            >
-              {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+              {isDark ? <Sun size={17} className="text-[#f9e2af]" /> : <Moon size={17} className="text-[#cba6f7]" />}
             </button>
 
+            {/* Mobile Hamburger Menu Toggle */}
             <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="p-2 rounded-xl bg-[#1e1e2e] border-2 border-[#313244] text-[#cdd6f4]"
+              onClick={() => {
+                soundManager.playPop();
+                setIsMobileOpen(!isMobileOpen);
+              }}
+              className="md:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white cursor-pointer ml-1"
+              title="Toggle Menu"
             >
               {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
+
           </div>
 
         </div>
+
+        {/* Mobile Accordion Dropdown (Marighoul Style) */}
+        {isMobileOpen && (
+          <div className="md:hidden py-4 border-t border-white/15 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`w-full text-left px-4 py-2.5 rounded-lg font-mono text-sm font-bold tracking-wider transition-colors cursor-pointer flex items-center justify-between ${
+                    isActive
+                      ? 'bg-white/20 text-[#f5c2e7] font-black'
+                      : 'text-white hover:bg-white/10 hover:text-[#d8b4e2]'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {isActive && <Sparkles size={14} className="text-[#f5c2e7]" />}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
       </div>
-
-      {/* Mobile Drawer */}
-      {isMobileOpen && (
-        <div className="sm:hidden border-t-2 border-[#313244] bg-[#181825] px-4 py-4 space-y-2">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className={`w-full text-left px-4 py-3 rounded-2xl font-display font-semibold text-sm transition-all ${
-                activeSection === item.id
-                  ? 'bg-[#cba6f7] text-[#11111b] font-bold shadow-[2px_2px_0px_#11111b]'
-                  : 'text-[#cdd6f4] hover:bg-[#313244]'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-          <div className="pt-2">
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#fab387] to-[#f9e2af] text-[#11111b] font-display font-extrabold text-sm shadow-[2px_2px_0px_#11111b] flex items-center justify-center gap-2"
-            >
-              <span>Hire Me / OJT Inquiry</span>
-              <Send size={14} />
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

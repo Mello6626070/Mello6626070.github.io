@@ -13,29 +13,29 @@ export const SkillSection: React.FC = () => {
     : skillsData.filter((s) => s.category === activeCategory);
 
   return (
-    <section className="py-16 md:py-24 bg-[#181825] border-b-2 border-[#313244] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 px-4 sm:px-8 border-b-2 border-dashed border-[#9e8492]/30 dark:border-[#5a4568]/40 relative">
+      <div className="max-w-[980px] mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b-2 border-[#313244] mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-dashed border-[#9e8492]/30 dark:border-[#5a4568]/40 mb-8">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#a6e3a1] uppercase tracking-wider mb-2 font-bold">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#16a34a] dark:text-[#a6e3a1] uppercase tracking-wider mb-2 font-bold">
               <Wrench size={14} />
               <span>SKETCHBOARD // TOOLS & METHODOLOGIES</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-display font-black text-[#30232a] dark:text-white tracking-tight">
               Skill & Knowledge Board
             </h2>
           </div>
 
-          <div className="font-hand text-xl text-[#f5c2e7] flex items-center gap-1.5 self-start md:self-end">
+          <div className="font-hand text-base sm:text-lg text-[#8b5aed] dark:text-[#f5c2e7] flex items-center gap-1.5 self-start sm:self-end font-bold">
             <Sparkles size={16} />
             <span>Tools I work with daily across game dev, security, and data</span>
           </div>
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex flex-wrap gap-2.5 mb-10">
+        <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-8">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -46,10 +46,10 @@ export const SkillSection: React.FC = () => {
                   setActiveCategory(cat);
                 }}
                 onMouseEnter={() => soundManager.playHover()}
-                className={`px-5 py-2.5 rounded-full font-display font-semibold text-xs tracking-wide transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-full font-mono font-bold text-xs tracking-wide transition-all duration-150 cursor-pointer ${
                   isActive
-                    ? 'bg-[#a6e3a1] text-[#11111b] shadow-[3px_3px_0px_#11111b] border-2 border-[#11111b] font-extrabold -translate-y-0.5'
-                    : 'bg-[#1e1e2e] text-[#a6adc8] hover:text-white hover:bg-[#313244] border-2 border-[#313244] shadow-[2px_2px_0px_#11111b]'
+                    ? 'bg-[#30232a] text-[#f7f4ee] dark:bg-[#a6e3a1] dark:text-[#11111b] shadow-[3px_3px_0px_#11111b] border-2 border-[#11111b] -translate-y-0.5'
+                    : 'bg-white dark:bg-[#201a2b] text-[#5a4855] dark:text-[#a6adc8] hover:text-[#30232a] dark:hover:text-white border-2 border-[#e5dfd8] dark:border-[#4a3a55] shadow-[2px_2px_0px_rgba(48,35,42,0.1)]'
                 }`}
               >
                 {cat}
@@ -58,28 +58,28 @@ export const SkillSection: React.FC = () => {
           })}
         </div>
 
-        {/* Skill Cards Grid (Catppuccin Sticker Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Skill Cards Grid (Sharyap & Marighoul Card Style) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredSkills.map((skill) => (
             <div
               key={skill.id}
               onMouseEnter={() => soundManager.playHover()}
-              className="sketch-card p-6 bg-[#1e1e2e] border-2 border-[#313244] flex flex-col justify-between space-y-4"
+              className="sketch-card p-5 sm:p-6 flex flex-col justify-between space-y-4"
             >
               
               {/* Card Header: Category & Level Badge */}
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-[11px] font-mono text-[#a6adc8] uppercase font-bold">
+                  <div className="text-[11px] font-mono text-[#7e6977] dark:text-[#a6adc8] uppercase font-bold">
                     {skill.category}
                   </div>
-                  <h3 className="font-display font-extrabold text-xl text-white mt-0.5">
+                  <h3 className="font-display font-black text-xl text-[#30232a] dark:text-white mt-0.5">
                     {skill.name}
                   </h3>
                 </div>
 
                 <span
-                  className="px-3 py-1 rounded-full text-xs font-mono font-bold border shadow-[2px_2px_0px_#11111b]"
+                  className="px-2.5 py-1 rounded-full text-xs font-mono font-bold border shadow-[2px_2px_0px_rgba(48,35,42,0.15)] dark:shadow-[2px_2px_0px_#000]"
                   style={{
                     backgroundColor: `${skill.color}20`,
                     color: skill.color,
@@ -92,11 +92,11 @@ export const SkillSection: React.FC = () => {
 
               {/* Progress Meter Bar */}
               <div>
-                <div className="flex justify-between text-xs font-mono text-[#a6adc8] mb-1.5">
+                <div className="flex justify-between text-xs font-mono text-[#5a4855] dark:text-[#a6adc8] mb-1.5 font-semibold">
                   <span>Confidence Level</span>
-                  <span className="font-bold text-white">{skill.levelPercent}%</span>
+                  <span className="font-bold text-[#30232a] dark:text-white">{skill.levelPercent}%</span>
                 </div>
-                <div className="h-2.5 w-full bg-[#181825] rounded-full overflow-hidden border border-[#313244]">
+                <div className="h-2.5 w-full bg-[#f0ece5] dark:bg-[#16111d] rounded-full overflow-hidden border border-[#e5dfd8] dark:border-[#382b45]">
                   <div
                     className="h-full rounded-full transition-all duration-300"
                     style={{
@@ -108,16 +108,16 @@ export const SkillSection: React.FC = () => {
               </div>
 
               {/* Note / Practical Application */}
-              <p className="text-xs text-[#bac2de] leading-relaxed bg-[#181825] p-3 rounded-xl border border-[#313244]">
+              <p className="text-xs text-[#4a3946] dark:text-[#bac2de] leading-relaxed bg-[#f8f6f2] dark:bg-[#181220] p-3 rounded-xl border border-[#e5dfd8] dark:border-[#382b45]">
                 {skill.note}
               </p>
 
               {/* Associated Tools Pills */}
-              <div className="flex flex-wrap gap-1.5 pt-1 border-t border-[#313244]/60">
+              <div className="flex flex-wrap gap-1.5 pt-2 border-t border-dashed border-[#9e8492]/25 dark:border-[#5a4568]/40">
                 {skill.tools.map((tool, idx) => (
                   <span
                     key={idx}
-                    className="px-2.5 py-0.5 rounded-lg text-[10px] font-mono bg-[#181825] text-[#cdd6f4] border border-[#313244]"
+                    className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white dark:bg-[#201a2b] text-[#30232a] dark:text-[#cdd6f4] border border-[#e5dfd8] dark:border-[#382b45] drop-shadow-tag hover:translate-y-[1px] transition-transform"
                   >
                     {tool}
                   </span>

@@ -1,5 +1,6 @@
 export interface ProfileData {
   name: string;
+  preferredName: string;
   handle: string;
   headline: string;
   status: string;
@@ -10,12 +11,23 @@ export interface ProfileData {
   bio: string;
   doodleQuote: string;
   links: {
-    github: string;
-    linkedin: string;
-    itchio: string;
-    artstation: string;
     email: string;
-    resumeUrl: string;
+    secondaryEmail: string;
+    phone: string;
+    instagram: string;
+    facebook: string;
+    github: string;
+    linkedin?: string;
+    itchio?: string;
+    artstation?: string;
+    twitter?: string;
+    youtube?: string;
+    discord?: string;
+    kofi?: string;
+    bluesky?: string;
+    artprints?: string;
+    merch?: string;
+    resumeUrl?: string;
   };
   disciplines: {
     title: string;
@@ -27,52 +39,64 @@ export interface ProfileData {
 }
 
 export const profileData: ProfileData = {
-  name: "Mello",
-  handle: "@mello.codes",
-  headline: "Aspiring Computer Science Student & Creative Developer",
-  status: "Open for OJT & Internship (2026)",
-  degree: "B.S. in Computer Science",
-  school: "College of Computer Studies",
-  location: "Remote / Hybrid / On-Site",
-  tagline: "Building games, breaking down network packets, exploring data, and crafting thoughtful code.",
-  bio: "Hi there! I'm an aspiring CS student looking for an internship/OJT opportunity. I love bringing together creative and technical worlds: sculpting 3D assets in Blender, scripting game physics in Godot, analyzing network traffic in cybersecurity, training data pipelines, and shipping clean software.",
-  doodleQuote: "always curious, building one sketch & prototype at a time ✨",
+  name: "Jesus Anthony G. Alarcon",
+  preferredName: "Anthony",
+  handle: "@anthony",
+  headline: "4th Year BS Computer Science Student",
+  status: "4th Year CS Student",
+  degree: "4th Year, B.S. in Computer Science",
+  school: "STI College Lucena",
+  location: "Lucena City, Quezon",
+  tagline: "Learning Godot, 3D modeling in Blender, and exploring code, science, and math.",
+  bio: "Hi! I'm Anthony, a 4th-year Computer Science student at STI College Lucena. When I'm not studying or learning new languages and tools, I enjoy playing video games, listening to music, watching anime and shows, reading, 3D modeling in Blender, photography, and exploring science and math.",
+  doodleQuote: "exploring games, 3d art, code, and science",
   links: {
-    github: "https://github.com",
+    email: "jesusanthonygicana@proton.me",
+    secondaryEmail: "j.anthonyalarcon@gmail.com",
+    phone: "09624605483",
+    instagram: "https://www.instagram.com/j.anthonyalarcon/",
+    facebook: "https://www.facebook.com/profile.php?id=61568805702116",
+    github: "https://github.com/Mello6626070",
+    discord: "https://discord.gg",
+    twitter: "https://twitter.com",
+    bluesky: "https://bsky.app",
+    youtube: "https://youtube.com",
+    kofi: "https://ko-fi.com",
+    artprints: "https://www.inprnt.com",
+    merch: "https://shop.example.com",
     linkedin: "https://linkedin.com",
     itchio: "https://itch.io",
     artstation: "https://artstation.com",
-    email: "student.developer@example.com",
     resumeUrl: "#resume",
   },
   disciplines: [
     {
-      title: "Game Development",
-      tag: "Godot 4 & Blender",
-      color: "bg-[#cba6f7]/20 text-[#cba6f7] border-[#cba6f7]/40",
-      accent: "#cba6f7",
-      desc: "GDScript mechanics, custom 2D/3D physics, game juice, and low-poly asset modeling.",
-    },
-    {
-      title: "Cybersecurity",
-      tag: "Packet Analysis & Defense",
-      color: "bg-[#a6e3a1]/20 text-[#a6e3a1] border-[#a6e3a1]/40",
-      accent: "#a6e3a1",
-      desc: "Network packet sniffing, protocol inspection with Wireshark & Scapy, and Linux hardening.",
-    },
-    {
-      title: "Data Science",
-      tag: "EDA & Machine Learning",
-      color: "bg-[#89dceb]/20 text-[#89dceb] border-[#89dceb]/40",
-      accent: "#89dceb",
-      desc: "Exploratory data analysis with Pandas, predictive modeling with Scikit-learn, and data visual narratives.",
-    },
-    {
-      title: "Software Engineering",
-      tag: "Full-Stack Web & Tools",
+      title: "3D Art & Photography",
+      tag: "Blender 3D & Photography",
       color: "bg-[#fab387]/20 text-[#fab387] border-[#fab387]/40",
       accent: "#fab387",
-      desc: "Clean architecture, React, TypeScript, RESTful endpoints, and automated CI/CD workflows.",
+      desc: "Low-poly 3D models in Blender and photography, shared on Instagram.",
+    },
+    {
+      title: "Game Development",
+      tag: "Godot 4 & Bevy Engine",
+      color: "bg-[#cba6f7]/20 text-[#cba6f7] border-[#cba6f7]/40",
+      accent: "#cba6f7",
+      desc: "Studying game mechanics, GDScript, physics, shaders, and Rust-based Bevy Engine concepts.",
+    },
+    {
+      title: "Systems & Networking",
+      tag: "Shell & Microcontrollers",
+      color: "bg-[#a6e3a1]/20 text-[#a6e3a1] border-[#a6e3a1]/40",
+      accent: "#a6e3a1",
+      desc: "Shell scripting, networking fundamentals, and Arduino IDE.",
+    },
+    {
+      title: "Programming Stack",
+      tag: "Multi-Language Study",
+      color: "bg-[#89dceb]/20 text-[#89dceb] border-[#89dceb]/40",
+      accent: "#89dceb",
+      desc: "Actively studying languages across paradigms: Rust, C++, C#, Java, Python, TypeScript, and React.",
     },
   ],
 };

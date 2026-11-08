@@ -8,7 +8,7 @@ export interface ProjectItem {
   categoryName: string;
   badge: string;
   accentColor: string; // Catppuccin color hex
-  bgGradient: string;
+  bannerBg: string; // Solid Catppuccin tinted background
   summary: string;
   objective: string;
   architecture: string;
@@ -28,7 +28,7 @@ export const projectsData: ProjectItem[] = [
     categoryName: "Game Development",
     badge: "Godot 4 & GDScript",
     accentColor: "#cba6f7", // Mauve
-    bgGradient: "from-[#cba6f7]/20 via-[#b4befe]/10 to-[#181825]",
+    bannerBg: "#232030",
     summary: "A snappy action platformer featuring custom state machines, screen-shake juice, particle FX, and tight controller input buffering.",
     objective: "Build a responsive character controller and modular combat loop using Godot 4's custom physics layers and event-driven signal bus architecture.",
     architecture: "Engineered in Godot 4.3 with pure GDScript. Decoupled UI, audio, and entity state using an Event-Bus pattern. Created custom 2D canvas shaders for chromatic hit-stops, coyote time, and pixel-accurate collision layers.",
@@ -51,7 +51,7 @@ export const projectsData: ProjectItem[] = [
     categoryName: "Game Development",
     badge: "Blender 3D",
     accentColor: "#fab387", // Peach
-    bgGradient: "from-[#fab387]/20 via-[#f9e2af]/10 to-[#181825]",
+    bannerBg: "#28211e",
     summary: "A hand-crafted modular 3D environment pack with clean low-poly topology, baked ambient occlusion, and game-engine export pipelines.",
     objective: "Design, model, sculpt, and UV-unwrap modular 3D assets in Blender, ensuring clean draw-call performance and immediate drag-and-drop Godot integration.",
     architecture: "Crafted in Blender 3D utilizing non-destructive modifiers (Bevel, Weighted Normal), custom vertex color palettes, and unified texture atlases. Rigged and optimized for direct .GLTF export into Godot 4.",
@@ -74,7 +74,7 @@ export const projectsData: ProjectItem[] = [
     categoryName: "Cybersecurity",
     badge: "Python & Wireshark",
     accentColor: "#a6e3a1", // Green
-    bgGradient: "from-[#a6e3a1]/20 via-[#94e2d5]/10 to-[#181825]",
+    bannerBg: "#1c2621",
     summary: "A real-time network packet analyzer that captures live network interfaces, decodes protocol headers, and flags suspicious broadcast traffic.",
     objective: "Inspect live layer 2-4 headers (Ethernet, IPv4/v6, TCP/UDP), detect ARP spoofing attempts, and output structured PCAP audit logs.",
     architecture: "Written in Python utilizing raw socket captures and Scapy dissection. Detects unauthorized ARP reply broadcasts, flags anomalous TCP SYN scan signatures, and exports structured PCAP logs for incident response review.",
@@ -97,7 +97,7 @@ export const projectsData: ProjectItem[] = [
     categoryName: "Cybersecurity",
     badge: "Cryptography",
     accentColor: "#f38ba8", // Red / Rose
-    bgGradient: "from-[#f38ba8]/20 via-[#eba0ac]/10 to-[#181825]",
+    bannerBg: "#271b21",
     summary: "A secure credential storage utility implementing AES-256-GCM, Argon2id key derivation, and Shannon entropy password evaluation.",
     objective: "Implement modern cryptographic primitives and memory-safe secret handling for proactive credential security auditing.",
     architecture: "Command-line utility implementing AES-256-GCM authenticated encryption and Argon2id memory-hard password hashing. Computes Shannon entropy scores to help users audit weak passwords before deployment.",
@@ -120,7 +120,7 @@ export const projectsData: ProjectItem[] = [
     categoryName: "Data Science",
     badge: "Pandas & Scikit-Learn",
     accentColor: "#89dceb", // Sky
-    bgGradient: "from-[#89dceb]/20 via-[#74c7ec]/10 to-[#181825]",
+    bannerBg: "#1a242c",
     summary: "An automated data pipeline for cleaning raw multi-variate datasets, performing exploratory feature analysis, and evaluating ML models.",
     objective: "Transform noisy tabular data into clear visual insights, engineer predictive features, and benchmark supervised machine learning algorithms.",
     architecture: "Jupyter-based pipeline using Python, Pandas, NumPy, and Scikit-Learn. Handles automated missing value imputation, multi-collinearity checks, and compares Random Forest vs. Gradient Boosted models with cross-validation metrics.",
@@ -143,7 +143,7 @@ export const projectsData: ProjectItem[] = [
     categoryName: "Software Engineering",
     badge: "TypeScript & React",
     accentColor: "#f5c2e7", // Pink
-    bgGradient: "from-[#f5c2e7]/20 via-[#cba6f7]/10 to-[#181825]",
+    bannerBg: "#261e27",
     summary: "A high-performance web platform featuring strict type safety, responsive design, modular state management, and CI/CD pipelines.",
     objective: "Engineer a clean full-stack web application with fast client-side rendering, accessible components, and automated GitHub Actions deployment.",
     architecture: "Built with React, TypeScript, and modern styling. Employs component composition, strict types across all props and data stores, and automated production build testing on push.",
